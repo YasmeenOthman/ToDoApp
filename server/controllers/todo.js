@@ -1,18 +1,5 @@
 const Todo = require("../database/models/todo");
 
-const createTodo = async (req, res) => {
-  const newTask = req.body;
-  console.log(newTask);
-  try {
-    if (newTask) {
-      await Todo.create(newTask);
-      res.send("New task is been added successfully");
-    } else {
-      res.json({ msg: "Please fill all the field" });
-    }
-  } catch (error) {}
-};
-
 // Retrieve all the saved data from the database
 const getAllTasks = async (req, res) => {
   try {
@@ -23,13 +10,39 @@ const getAllTasks = async (req, res) => {
     console.log(error);
   }
 };
+// Create a new task
+const createTodo = async (req, res) => {
+  const newTask = req.body;
 
-const updateTask = async (req, res) => {
-  res.send("update Route");
+  try {
+    await Todo.create(newTask);
+    res.send("New task is been added successfully");
+  } catch (error) {}
 };
 
+// update a specific task with a specific id
+const updateTask = async (req, res) => {
+  const updatedTask = req.body;
+  const id = req.params.id;
+
+  try {
+    const newValue = await Todo.findByIdAndUpdate(id, updatedTask);
+    res.send(newValue);
+  } catch (error) {
+    res.send("Can not update");
+  }
+};
+
+// delete a specific task with a specific id
 const deleteTask = async (req, res) => {
-  res.send("delete Route");
+  const id = req.params.id;
+  console.log(id);
+  try {
+    const deletedValue = await Todo.findByIdAndDelete(id);
+    res.send(deletedValue);
+  } catch (error) {
+    res.send("Can not delete");
+  }
 };
 
 module.exports = { createTodo, getAllTasks, deleteTask, updateTask };
