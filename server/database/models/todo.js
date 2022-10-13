@@ -1,14 +1,17 @@
 const mongoose = require("mongoose");
-const User = require("./user");
+const Schema = mongoose.Schema;
+
 const todoSchema = new mongoose.Schema({
-  description: String,
-  Date: {
+  description: { type: String, required: true },
+  date: {
     type: Date,
     default: function () {
       return Date.now();
     },
-    user: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
+  user: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  isCompleted: { type: Boolean },
+  priority: { type: String },
 });
 
 const Todo = mongoose.model("Todo", todoSchema);
