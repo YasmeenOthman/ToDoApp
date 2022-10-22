@@ -4,7 +4,7 @@ const {
   createTodo,
   deleteTask,
   updateTask,
-} = require("../controllers/todo");
+} = require("../controllers/task");
 
 // CRUD operation
 router.get("/", getAllTasks);

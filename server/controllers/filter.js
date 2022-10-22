@@ -1,6 +1,7 @@
-const Todo = require("../database/models/todo");
+const Todo = require("../database/models/task");
 
 // Retrieve all the saved data from the database
+
 const priorityFilter = async (req, res) => {
   const priority = req.params.priority;
   try {

@@ -1,9 +1,9 @@
-const Todo = require("../database/models/todo");
+const taskModel = require("../database/models/task");
 
 // Retrieve all the saved data from the database
 const getAllTasks = async (req, res) => {
   try {
-    const tasks = await Todo.find();
+    const tasks = await taskModel.find();
     res.send(tasks);
   } catch (error) {
     res.status(500).json({ msg: "Internal server error" });
@@ -15,7 +15,7 @@ const createTodo = async (req, res) => {
   const newTask = req.body;
 
   try {
-    await Todo.create(newTask);
+    await taskModel.create(newTask);
     res.send("New task is been added successfully");
   } catch (error) {}
 };
@@ -26,7 +26,7 @@ const updateTask = async (req, res) => {
   const id = req.params.id;
 
   try {
-    const newValue = await Todo.findByIdAndUpdate(id, updatedTask);
+    const newValue = await taskModel.findByIdAndUpdate(id, updatedTask);
     res.send(newValue);
   } catch (error) {
     res.send("Can not update");
@@ -38,7 +38,7 @@ const deleteTask = async (req, res) => {
   const id = req.params.id;
   console.log(id);
   try {
-    const deletedValue = await Todo.findByIdAndDelete(id);
+    const deletedValue = await taskModel.findByIdAndDelete(id);
     res.send(deletedValue);
   } catch (error) {
     res.send("Can not delete");
