@@ -20,7 +20,7 @@ const Login = () => {
       .then((res) => {
         console.log("login successfully", res);
         //👇🏻 redirects to the Tasks page.
-        navigate("/tasks");
+        navigate("/task");
       })
       .catch((err) => {
         console.log("Could not register", err);

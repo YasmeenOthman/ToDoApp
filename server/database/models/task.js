@@ -9,9 +9,7 @@ const taskSchema = new mongoose.Schema({
       return Date.now();
     },
   },
-  user: [{ type: Schema.Types.ObjectId, ref: "User" }],
-  isCompleted: { type: Boolean },
-  status: { type: String, required: true },
+  author: String,
 });
 
 const Task = mongoose.model("Task", taskSchema);
