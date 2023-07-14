@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import "./login.css";
 import axios from "axios";
 
 const Login = () => {
@@ -27,29 +29,40 @@ const Login = () => {
       });
   }
   return (
-    <div className="login__container">
-      <form className="login__form" onSubmit={handleLogin}>
-        <label htmlFor="email">Email</label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          value={user.email}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <label htmlFor="password">Password</label>
-        <input
-          type="text"
-          name="password"
-          id="password"
-          value={user.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="loginContainer">
+      <div className="formSection">
+        {" "}
+        <h3 className="formHeader">Login</h3>
+        <p className="loginMessage">
+          You do not have an account?! signup{" "}
+          <Link to="/signup">here</Link>
+        </p>
+        <form className="login__form" onSubmit={handleLogin}>
+          <label htmlFor="email">Email</label>
+          <input
+            placeholder="Email..."
+            type="text"
+            name="email"
+            id="email"
+            value={user.email}
+            onChange={handleChange}
+            required
+          />
+          <br />
+          <label htmlFor="password">Password</label>
+          <input
+            placeholder="Password..."
+            type="text"
+            name="password"
+            id="password"
+            value={user.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+      <div className="imageSection"></div>
     </div>
   );
 };
