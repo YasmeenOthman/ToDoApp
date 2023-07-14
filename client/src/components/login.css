@@ -5,7 +5,7 @@
 }
 .loginContainer {
   width: 100vw;
-  height: 100vh;
+  height: 88vh;
   display: flex;
 }
 .imageSection {
@@ -22,14 +22,29 @@
 }
 
 .formHeader {
-  /* margin: 40px; */
   padding: 15px;
   font-family: cursive;
-  font-size: 3.5em;
+  font-size: 2.8em;
   color: #eb920d;
 }
-.loginMessage {
-  margin: 20px;
+
+.formMessage {
+  margin-bottom: 20px;
+  color: #7c7c7c;
+  font-family: cursive;
+
+  font-size: 1.2em;
+}
+.formMessageLink {
+  margin-left: 5px;
+  font-family: cursive;
+  color: #3d3c3c;
+  transition: 0.3s;
+}
+
+.formMessageLink:hover {
+  font-size: 22px;
+  color: #ce7f09;
 }
 .login__form {
   width: 50%;
@@ -42,6 +57,7 @@
   margin-bottom: 15px;
   font-family: cursive;
   font-size: 1.2em;
+  color: #3d3c3c;
 }
 .login__form > input {
   width: 100%;
@@ -49,9 +65,10 @@
   margin-bottom: 15px;
   border-radius: 15px;
   border-color: #eee;
+  font-size: 1.2em;
 }
 .login__form > button {
-  background-color: #eb920d;
+  background-color: #eb7c0d;
   color: #fff;
   cursor: pointer;
   border: none;
@@ -62,9 +79,10 @@
   margin: 20px auto;
   border-radius: 15px;
   font-family: cursive;
+  box-shadow: 3px 5px 10px #ce7f09;
 }
 
 .login__form > button:hover {
-  background-color: #ce7f09;
+  background-color: #f09d4a;
   color: #fff;
 }

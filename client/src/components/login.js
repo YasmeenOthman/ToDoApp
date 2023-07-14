@@ -33,15 +33,17 @@ const Login = () => {
       <div className="formSection">
         {" "}
         <h3 className="formHeader">Login</h3>
-        <p className="loginMessage">
-          You do not have an account?! signup{" "}
-          <Link to="/signup">here</Link>
+        <p className="formMessage">
+          You do not have an account!
+          <Link className="formMessageLink" to="/signup">
+            signup{" "}
+          </Link>
         </p>
         <form className="login__form" onSubmit={handleLogin}>
           <label htmlFor="email">Email</label>
           <input
             placeholder="Email..."
-            type="text"
+            type="email"
             name="email"
             id="email"
             value={user.email}
@@ -52,7 +54,7 @@ const Login = () => {
           <label htmlFor="password">Password</label>
           <input
             placeholder="Password..."
-            type="text"
+            type="password"
             name="password"
             id="password"
             value={user.password}
