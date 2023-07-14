@@ -1,4 +1,4 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 * {
   font-family: "Space Grotesk", sans-serif;
   box-sizing: border-box;
@@ -10,16 +10,7 @@ body {
   margin: 0;
   padding: 0;
 }
-.navbar {
-  width: 100%;
-  background-color: #f1f7ee;
-  height: 10vh;
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-}
+
 .form__input {
   min-height: 20vh;
   display: flex;
@@ -35,7 +26,7 @@ body {
   width: 150px;
   padding: 10px;
   cursor: pointer;
-  background-color: #367e18;
+  background-color: #e33e07;
   color: #fff;
   border: none;
   outline: none;
@@ -46,8 +37,9 @@ body {
   min-height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 10px;
+  /* border: #367e18 solid 1px; */
 }
 
 .completed__wrapper,
@@ -66,24 +58,25 @@ body {
   text-transform: capitalize;
 }
 .pending__items {
-  background-color: #eee3cb;
+  background-color: #f6816f;
 }
 .ongoing__items {
-  background-color: #d2daff;
+  background-color: #95c3f7;
 }
 .completed__items {
-  background-color: #7fb77e;
+  background-color: #6fb96e;
 }
 .pending__container,
 .ongoing__container,
 .completed__container {
   width: 100%;
-  min-height: 55vh;
+  height: 55vh;
   display: flex;
   flex-direction: column;
   padding: 5px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  overflow: scroll;
 }
 .pending__items,
 .ongoing__items,
@@ -164,4 +157,51 @@ body {
   font-size: 16px;
   outline: none;
   width: 200px;
-} */
+}
+.registerbtn {
+  margin: 10px;
+  height: 50px;
+  width: 60px;
+  border: none;
+  cursor: pointer;
+  /* background-color: rgb(183, 188, 186); */
+}
+
+/* Navbar component */
+.navbar {
+  width: 100%;
+  background-color: #f1f7ee;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px;
+}
+
+.logo {
+  width: 20%;
+}
+
+/* Quote component style */
+.quoteContainer {
+  border: 1px black solid;
+  width: 60%;
+  position: relative;
+  translate: 35% 50%;
+  background-color: darksalmon;
+}
+.quoteBody {
+  padding: 10px;
+  font-family: fantasy;
+  font-size: 150%;
+  text-align: center;
+}
+.quoteAuthor {
+  margin: 20px;
+  text-align: right;
+  font-size: 100%;
+  font-family: fantasy;
+  color: grey;
+}

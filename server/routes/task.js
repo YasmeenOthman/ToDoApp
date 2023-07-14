@@ -1,14 +1,15 @@
 const router = require("express").Router();
+const verifyToken = require("../middleware/auth");
 const {
   getAllTasks,
-  createTodo,
+  createTask,
   deleteTask,
   updateTask,
 } = require("../controllers/task");
 
 // CRUD operation
 router.get("/", getAllTasks);
-router.post("/create", createTodo);
-router.put("/update/:id", updateTask);
-router.delete("/delete/:id", deleteTask);
+router.post("/create", verifyToken, createTask);
+router.put("/update/:id", verifyToken, updateTask);
+router.delete("/delete/:id", verifyToken, deleteTask);
 module.exports = router;
