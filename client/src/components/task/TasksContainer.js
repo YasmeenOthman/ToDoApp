@@ -20,23 +20,19 @@ const TasksContainer = (props) => {
       <div className="pending__wrapper">
         <h3>Pending Tasks</h3>
         <div className="pending__container">
-          {props.tasks.map((task) => {
-            return (
-              <div className="pending__items" draggable>
-                <p>{task.description}</p>
-                <p className="comment">
-                  <Link to="/comments">2 Comments</Link>
-                </p>
-              </div>
-            );
-          })}
+          <div className="pending__items" draggable>
+            <p>Pending Tasks</p>
+            <p className="comment">
+              <Link to="/comments">2 Comments</Link>
+            </p>
+          </div>
         </div>
       </div>
       <div className="ongoing__wrapper">
         <h3>Ongoing Tasks</h3>
         <div className="ongoing__container">
           <div className="ongoing__items">
-            <p>Create designs for Novu</p>
+            <p>Try to implement the drag and drop</p>
             <p className="comment">
               <Link to="/comments">Add Comment</Link>
             </p>

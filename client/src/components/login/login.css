@@ -4,6 +4,7 @@
   padding: 0;
   --mainColor: #eb7c0d;
   --fontColor: #eb920d;
+  --fontFamily: fantasy;
 }
 .loginContainer {
   width: 100vw;
@@ -25,7 +26,7 @@
 
 .formHeader {
   padding: 15px;
-  font-family: cursive;
+  font-family: var(--fontFamily);
   font-size: 2.8em;
   color: var(--fontColor);
 }
@@ -33,13 +34,13 @@
 .formMessage {
   margin-bottom: 20px;
   color: #7c7c7c;
-  font-family: cursive;
+  font-family: var(--fontFamily);
 
   font-size: 1.2em;
 }
 .formMessageLink {
   margin-left: 5px;
-  font-family: cursive;
+  font-family: var(--fontFamily);
   color: #3d3c3c;
   transition: 0.3s;
 }
@@ -57,7 +58,7 @@
 }
 .login__form > label {
   margin-bottom: 15px;
-  font-family: cursive;
+  font-family: var(--fontFamily);
   font-size: 1.2em;
   color: #3d3c3c;
 }
@@ -81,7 +82,7 @@
   font-size: 1.6em;
   margin: 20px auto;
   border-radius: 15px;
-  font-family: cursive;
+  font-family: var(--fontFamily);
   box-shadow: 3px 5px 10px #ce7f09;
 }
 

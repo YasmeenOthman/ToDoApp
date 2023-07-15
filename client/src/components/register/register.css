@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  --fontFamily: fantasy;
 }
 .signUpContainer {
   width: 100vw;
@@ -27,7 +28,7 @@
 
 .signup__form > label {
   margin-bottom: 15px;
-  font-family: cursive;
+  font-family: var(--fontFamily);
   font-size: 1.2em;
   color: #3d3c3c;
 }
@@ -37,7 +38,7 @@
   border-radius: 15px;
   border-color: #eee;
   font-size: 1.2em;
-  font-family: cursive;
+  font-family: var(--fontFamily);
   border-style: ridge;
 }
 
@@ -52,7 +53,7 @@
   font-size: 1.6em;
   margin: 0 auto;
   border-radius: 15px;
-  font-family: cursive;
+  font-family: var(--fontFamily);
   box-shadow: 3px 5px 10px #ce7f09;
 }
 

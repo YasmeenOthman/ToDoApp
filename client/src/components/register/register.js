@@ -72,7 +72,7 @@ const SignUp = () => {
             onChange={handleChange}
           />
           <br />
-          <button>Register</button>
+          <button>Sign-up</button>
         </form>
       </div>
       <div className="signupImageSection"></div>
