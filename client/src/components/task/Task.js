@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 
 import AddTask from "./AddTask";
 import TasksContainer from "./TasksContainer";
+import Footer from "../footer/footer";
+
 import "./task.css";
 const Task = () => {
   let [tasks, setTasks] = useState([]);
@@ -21,6 +23,7 @@ const Task = () => {
     <div className="taskComponent">
       <AddTask />
       <TasksContainer tasks={tasks} />
+      {/* <Footer /> */}
     </div>
   );
 };

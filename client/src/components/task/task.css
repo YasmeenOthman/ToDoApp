@@ -7,10 +7,9 @@
   margin: 0;
   padding: 0;
 }
-a {
-  text-decoration: none;
+.taskComponent {
+  height: 100vh;
 }
-
 .form__input {
   min-height: 20vh;
   display: flex;
@@ -123,13 +122,13 @@ a {
 .pending__items {
   background-color: #f6816f;
 }
-
 .ongoing__items {
   background-color: #f4dc72;
 }
 .completed__items {
   background-color: #6fb96e;
 }
+
 .comment {
   text-align: right;
   position: absolute;
@@ -137,8 +136,12 @@ a {
   bottom: 10px;
   font-size: 14px;
   cursor: pointer;
-  color: rgb(85, 85, 199);
 }
+.comment > a {
+  text-decoration: none;
+  color: rgb(25, 111, 157);
+}
+
 .comment:hover {
   text-decoration: underline;
 }
@@ -177,26 +180,4 @@ a {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-/* Quote component style */
-.quoteContainer {
-  border: 1px black solid;
-  width: 60%;
-  position: relative;
-  translate: 35% 50%;
-  background-color: darksalmon;
-}
-.quoteBody {
-  padding: 10px;
-  font-family: var(--font-family);
-  font-size: 150%;
-  text-align: center;
-}
-.quoteAuthor {
-  margin: 20px;
-  text-align: right;
-  font-size: 100%;
-  font-family: fantasy;
-  color: grey;
 }

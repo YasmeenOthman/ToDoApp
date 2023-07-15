@@ -1,0 +1,30 @@
+/* Quote component style */
+.quoteContainer {
+  border: none;
+  width: 60%;
+  height: 20vh;
+  margin: 70px auto;
+  background-color: #eb920db8;
+  color: black;
+  border-radius: 20px;
+  box-shadow: 10px 10px 100px rgb(245, 192, 86);
+  position: relative;
+}
+.quoteBody {
+  padding-top: 10px;
+  font-family: var(--font-family);
+  font-size: 2em;
+  text-align: center;
+  height: 150px;
+}
+.quoteAuthor {
+  margin: 20px;
+
+  font-size: 100%;
+  font-family: var(--font-family);
+  text-align: center;
+  color: rgba(39, 38, 38, 0.871);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

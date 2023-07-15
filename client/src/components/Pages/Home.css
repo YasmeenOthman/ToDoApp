@@ -1,0 +1,29 @@
+.homePage-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.HomePage-Body {
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  margin: 50px auto;
+}
+.section {
+  display: flex;
+  margin: 20px auto 50px auto;
+  width: 1000px;
+  text-align: left;
+  gap: 50px;
+}
+
+img {
+  width: 400px;
+  height: 300px;
+}
+.bodyText {
+  position: relative;
+  top: 20px;
+}

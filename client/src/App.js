@@ -6,6 +6,7 @@ import SignUp from "./components/register/register.js";
 import Nav from "./components/NavBar/Nav.js";
 import HomePage from "./components/Pages/Home.js";
 
+
 function App() {
   return (
     <BrowserRouter>
