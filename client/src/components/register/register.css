@@ -38,6 +38,7 @@
   border-color: #eee;
   font-size: 1.2em;
   font-family: cursive;
+  border-style: ridge;
 }
 
 .signup__form > button {

@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+
 import AddTask from "./AddTask";
 import TasksContainer from "./TasksContainer";
-
+import "./task.css";
 const Task = () => {
   let [tasks, setTasks] = useState([]);
   useEffect(() => {
@@ -17,7 +18,7 @@ const Task = () => {
       });
   }, []);
   return (
-    <div>
+    <div className="taskComponent">
       <AddTask />
       <TasksContainer tasks={tasks} />
     </div>

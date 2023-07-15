@@ -2,6 +2,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  --mainColor: #eb7c0d;
+  --fontColor: #eb920d;
 }
 .loginContainer {
   width: 100vw;
@@ -25,7 +27,7 @@
   padding: 15px;
   font-family: cursive;
   font-size: 2.8em;
-  color: #eb920d;
+  color: var(--fontColor);
 }
 
 .formMessage {
@@ -44,7 +46,7 @@
 
 .formMessageLink:hover {
   font-size: 22px;
-  color: #ce7f09;
+  color: var(--fontColor);
 }
 .login__form {
   width: 50%;
@@ -66,9 +68,10 @@
   border-radius: 15px;
   border-color: #eee;
   font-size: 1.2em;
+  border-style: ridge;
 }
 .login__form > button {
-  background-color: #eb7c0d;
+  background-color: var(--mainColor);
   color: #fff;
   cursor: pointer;
   border: none;

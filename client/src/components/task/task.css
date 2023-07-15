@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+* {
+  font-family: "Space Grotesk", sans-serif;
+  box-sizing: border-box;
+  --mainColor: #eb7c0d;
+}
+a {
+  text-decoration: none;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.taskComponent {
+  /* background-color: rgb(252, 201, 165); */
+}
+.form__input {
+  min-height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.taskInput {
+  width: 50%;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 15px;
+  border-radius: 15px;
+  border-color: #eee;
+  font-size: 1.2em;
+  border-style: ridge;
+}
+.addTodoBtn {
+  background-color: rgba(38, 114, 38, 0.918);
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  font-size: 1.6em;
+  border-radius: 15px;
+  font-family: cursive;
+  box-shadow: 3px 5px 10px #35523c;
+  width: 5%;
+}
+.container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.completed__wrapper,
+.ongoing__wrapper,
+.pending__wrapper {
+  width: 32%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  align-items: center;
+}
+.ongoing__wrapper > h3,
+.pending__wrapper > h3,
+.completed__wrapper > h3 {
+  text-align: center;
+  border: solid #ddd;
+  border-radius: 10px;
+  width: 40%;
+  padding: 10px;
+  margin: 10px;
+}
+.ongoing__wrapper > h3 {
+  background-color: #f7edbccf;
+}
+.pending__wrapper > h3 {
+  background-color: #f7bcb3e7;
+}
+.completed__wrapper > h3 {
+  background-color: #8ac389dd;
+}
+
+.pending__items {
+  background-color: #f6816f;
+}
+
+.ongoing__items {
+  background-color: #f4dc72;
+}
+.completed__items {
+  background-color: #6fb96e;
+}
+.pending__container,
+.ongoing__container,
+.completed__container {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: scroll;
+}
+.pending__items,
+.ongoing__items,
+.completed__items {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+.comment {
+  text-align: right;
+  font-size: 14px;
+  cursor: pointer;
+  color: rgb(85, 85, 199);
+}
+.comment:hover {
+  text-decoration: underline;
+}
+.comments__container {
+  padding: 20px;
+}
+.comment__form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.comment__form > label {
+  margin-bottom: 15px;
+}
+.comment__form textarea {
+  width: 80%;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+.commentBtn {
+  padding: 10px;
+  width: 200px;
+  background-color: #367e18;
+  outline: none;
+  border: none;
+  color: #fff;
+  height: 45px;
+  cursor: pointer;
+}
+.comments__section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Quote component style */
+.quoteContainer {
+  border: 1px black solid;
+  width: 60%;
+  position: relative;
+  translate: 35% 50%;
+  background-color: darksalmon;
+}
+.quoteBody {
+  padding: 10px;
+  font-family: fantasy;
+  font-size: 150%;
+  text-align: center;
+}
+.quoteAuthor {
+  margin: 20px;
+  text-align: right;
+  font-size: 100%;
+  font-family: fantasy;
+  color: grey;
+}

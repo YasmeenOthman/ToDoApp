@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Nav.css";
 
 const Nav = () => {
   return (
@@ -14,13 +15,13 @@ const Nav = () => {
         </div>
       </Link>
 
-      <h3>Plan Your Day</h3>
+      <h1>Plan Your Day</h1>
       <div>
         <Link to="/login">
-          <button className="registerbtn">Login</button>
+          <button className="registerBtn">Login</button>
         </Link>
         <Link to="/signup">
-          <button className="registerbtn">SignUp</button>
+          <button className="registerBtn">SignUp</button>
         </Link>
       </div>
     </div>

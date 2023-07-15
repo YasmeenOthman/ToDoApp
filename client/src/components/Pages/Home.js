@@ -1,6 +1,6 @@
 import React from "react";
 import Quote from "./Quote";
-import Nav from "./Nav";
+import Nav from "../NavBar/Nav";
 const HomePage = () => {
   return (
     <div>

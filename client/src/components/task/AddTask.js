@@ -25,17 +25,18 @@ const AddTask = () => {
   return (
     <>
       <form className="form__input" onSubmit={addNewTask}>
-        <label htmlFor="task">Add new Task</label>
+        {/* <label htmlFor="task">Add new Task</label> */}
         <input
           type="text"
           name="task"
           id="task"
+          placeholder="What to do..."
           value={task.description}
-          className="input"
+          className="taskInput"
           required
           onChange={handleChange}
         />
-        <button className="addTodoBtn">add</button>
+        <button className="addTodoBtn">+</button>
       </form>
     </>
   );

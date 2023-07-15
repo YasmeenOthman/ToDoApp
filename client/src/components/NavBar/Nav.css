@@ -1,0 +1,24 @@
+/* Navbar component */
+.navbar {
+  width: 100%;
+  background-color: #f1f7ee;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px;
+}
+
+.logo {
+  width: 20%;
+}
+.registerBtn {
+  margin: 10px;
+  height: 50px;
+  width: 60px;
+  border: none;
+  cursor: pointer;
+  /* background-color: rgb(183, 188, 186); */
+}
