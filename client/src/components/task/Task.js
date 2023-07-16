@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import AddTask from "./AddTask";
 import TasksContainer from "./TasksContainer";
-import Footer from "../footer/footer";
+import Footer from "../footer/Footer";
 
 import "./task.css";
 const Task = () => {
@@ -23,7 +23,7 @@ const Task = () => {
     <div className="taskComponent">
       <AddTask />
       <TasksContainer tasks={tasks} />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

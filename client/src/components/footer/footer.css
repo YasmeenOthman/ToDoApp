@@ -1,5 +1,7 @@
 .footerContainer {
   width: 100vw;
-  height: 18vh;
+  height: 10vh;
   background-color: #ccc;
+  align-self: flex-end;
+  padding: 20px;
 }

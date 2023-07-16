@@ -1,13 +1,11 @@
 .homePage-container {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .HomePage-Body {
-  width: 100vw;
-  height: 100vh;
   padding: 20px;
   margin: 50px auto;
 }
@@ -20,10 +18,17 @@
 }
 
 img {
-  width: 400px;
-  height: 300px;
+  width: 500px;
+  height: 500px;
 }
 .bodyText {
   position: relative;
   top: 20px;
+  line-height: 150%;
+  font-size: 1.2em;
+  font-weight: 100;
+  color: #5a5a5a;
+  border: dotted 3px gold;
+  padding: 20px;
+  text-align: justify;
 }

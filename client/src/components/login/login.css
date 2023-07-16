@@ -2,8 +2,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  --mainColor: #eb7c0d;
-  --fontColor: #eb920d;
+  --mainColor: rgb(255, 179, 0);
+  --fontColor: rgb(255, 179, 0);
   --fontFamily: fantasy;
 }
 .loginContainer {

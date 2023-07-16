@@ -1,24 +1,47 @@
-/* Navbar component */
+* {
+  --fontFamily: fantasy;
+}
 .navbar {
-  width: 100%;
-  background-color: #f1f7ee;
+  width: 90%;
   height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ddd;
   padding: 20px;
-  margin: 10px;
+  margin: 10px auto;
 }
+.navbar h1 {
+  font-family: var(--fontFamily);
+  font-weight: bolder;
+  color: black;
+  animation: writeAnimation 4s steps(10, end) forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 1px solid #000;
 
-.logo {
-  width: 20%;
 }
-.registerBtn {
-  margin: 10px;
-  height: 50px;
-  width: 60px;
+.btn {
+  margin: 15px;
   border: none;
   cursor: pointer;
-  /* background-color: rgb(183, 188, 186); */
+  background-color: transparent;
+  font-size: 1.2em;
+  font-family: var(--fontFamily);
+  transition: 0.3s;
 }
+.btn:hover {
+  color: gold;
+  font-size: 1.6em;
+}
+
+@keyframes writeAnimation {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+    border-right: none;
+  }
+}
+

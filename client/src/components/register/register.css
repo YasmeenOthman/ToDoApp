@@ -43,7 +43,7 @@
 }
 
 .signup__form > button {
-  background-color: #eb7c0d;
+  background-color: rgb(255, 179, 0);
   color: #fff;
   cursor: pointer;
   border: none;

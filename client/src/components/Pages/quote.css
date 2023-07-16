@@ -1,30 +1,41 @@
 /* Quote component style */
 .quoteContainer {
   border: none;
-  width: 60%;
+  min-width: 70%;
   height: 20vh;
   margin: 70px auto;
-  background-color: #eb920db8;
-  color: black;
+  background-color: black;
+  color: whitesmoke;
   border-radius: 20px;
-  box-shadow: 10px 10px 100px rgb(245, 192, 86);
+  box-shadow: 10px 10px 100px rgb(248, 238, 159);
   position: relative;
 }
 .quoteBody {
-  padding-top: 10px;
+  padding-top: 50px;
   font-family: var(--font-family);
-  font-size: 2em;
+  font-size: 1.8em;
   text-align: center;
-  height: 150px;
+  min-height: 150px;
+  animation: pageNameAnimation 5s forwards;
 }
 .quoteAuthor {
   margin: 20px;
-
   font-size: 100%;
   font-family: var(--font-family);
   text-align: center;
-  color: rgba(39, 38, 38, 0.871);
+  color: rgba(225, 220, 220, 0.871);
   position: absolute;
   right: 0;
   bottom: 0;
+  font-size: large;
+}
+
+@keyframes pageNameAnimation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+    color: gold;
+  }
 }
