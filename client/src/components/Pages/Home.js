@@ -13,7 +13,7 @@ const HomePage = () => {
           <div className="section">
             <div className="bodyText">
               {" "}
-              <p className="upperText">
+              <p className="upperText" id="about">
                 Welcome to our task management app, here organizing your tasks
                 has never been easier. With our intuitive and user-friendly
                 interface, you can effortlessly manage your daily, weekly, and

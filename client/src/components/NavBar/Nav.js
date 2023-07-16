@@ -9,6 +9,9 @@ const Nav = () => {
         <h1>Plan Your Day...</h1>
       </Link>
       <div>
+        <Link to="/Task">
+          <button className="btn">Your Tasks</button>
+        </Link>
         <Link to="/login">
           <button className="btn">Login</button>
         </Link>
