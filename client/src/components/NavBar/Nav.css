@@ -15,10 +15,7 @@
   font-family: var(--fontFamily);
   font-weight: bolder;
   color: black;
-  animation: writeAnimation 4s steps(10, end) forwards;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 1px solid #000;
+
 
 }
 .btn {
@@ -35,13 +32,4 @@
   font-size: 1.6em;
 }
 
-@keyframes writeAnimation {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-    border-right: none;
-  }
-}
 
