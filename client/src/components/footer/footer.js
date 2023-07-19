@@ -1,42 +1,19 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import "./footer.css";
+
 function Footer() {
   return (
     <footer>
-      <div class="footer-links">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            {" "}
-            <Link to="/" href="#about">
-              About
-            </Link>
-          </li>
-          <li>
-            <Link to="/task">Manage Your Tasks</Link>
-          </li>
-        </ul>
+      <div className="footer-contacts">
+        <p>Email:yasmeen.othman20@gmail.com</p>
+        <p>Phone: 00972-595121097</p>
+        <p>Address: Tulkarm, Palestine</p>
       </div>
-
-      <div class="footer-contacts">
-        <p>Email: example@example.com</p>
-        <p>Phone: 123-456-7890</p>
-        <p>Address: 123 Main Street, City</p>
-      </div>
-
-      <div class="footer-newsletter">
-        <h3>Subscribe to our Newsletter</h3>
-        <form action="#">
-          <input
-            type="email"
-            name="email"
-            placeholder="Your email address"
-            required
-          />
-          <button type="submit">Subscribe</button>
-        </form>
+      <div>
+        <p className="footer-copyright">
+          &copy; {new Date().getFullYear()} Yasmeen Othman. All rights reserved.
+        </p>
       </div>
     </footer>
   );

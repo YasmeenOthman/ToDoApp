@@ -3,6 +3,7 @@ import React from "react";
 import Quote from "./Quote";
 import Footer from "../footer/Footer";
 import "./Home.css";
+import CalendarComponent from "../CalendarComponent";
 
 const HomePage = () => {
   return (
@@ -22,13 +23,13 @@ const HomePage = () => {
                 assigning priorities.
               </p>
             </div>
-
+            {/* <CalendarComponent /> */}
             <img src="./assets/4.gif" />
           </div>
           <div className="section">
             <img src="./assets/3.gif" />
             <div className="bodyText">
-              <p className="lowerText">Plan Your Day .....</p>
+              <h2 className="lowerText">Plan Your Day .....</h2>
               <p className="lowerText2">
                 Don't hesitate any longer—take the leap and register now to give
                 it a try!
@@ -42,6 +43,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
       <Footer />
     </>
   );
