@@ -1,15 +1,22 @@
-footer {
-  background-color: #f5f5f5;
+.copy-right {
+  background-color: #000000;
+  width: 100%;
+  min-height: 5vh;
   padding: 20px;
-  width: 100vw;
-  min-height: 10vh;
-  padding: 10px;
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
+  color: #aaa;
+  text-align: center;
+  font-size: 1.2em;
 }
 
-.footer-links a {
+footer {
+  display: flex;
+  justify-content: center;
+}
+.second {
+  margin: 15px;
+  color: #aaa;
+}
+/* .footer-links a {
   color: #333;
   text-decoration: none;
   margin-right: 10px;
@@ -35,4 +42,4 @@ footer {
   color: #fff;
   border: none;
   cursor: pointer;
-}
+} */
