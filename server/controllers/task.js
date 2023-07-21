@@ -20,15 +20,15 @@ const createTask = async (req, res) => {
     res.status(500).send("Can not create a new task ,Internal server error");
   }
 };
-// Retrieve all the saved data from the database
-const getAllTasks = async (req, res) => {
+// Retrieve all tasks for specific user
+const getUserTasks = async (req, res) => {
   try {
-    const tasks = await Task.find();
+    const authorId = req.params.authorId;
+    const tasks = await Task.find({ author: authorId });
     res.send(tasks);
-    // console.log(tasks);
   } catch (error) {
     res.status(500).json({ msg: "Internal server error" });
-    // console.log(error, "error");
+    console.log(error, "error");
   }
 };
 
@@ -85,4 +85,4 @@ const deleteTask = async (req, res) => {
   }
 };
 
-module.exports = { createTask, getAllTasks, deleteTask, updateTask };
+module.exports = { createTask, getUserTasks, deleteTask, updateTask };
