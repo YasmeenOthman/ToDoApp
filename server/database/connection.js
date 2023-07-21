@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
-// const URI = process.env.MONGODB_URL;
-const URI = "mongodb://127.0.0.1:27017/test";
+const URI = process.env.MONGODB_URL;
 
 main()
   .then(() => console.log("DB connected successfully"))

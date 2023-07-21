@@ -1,17 +1,19 @@
+footer {
+  display: flex;
+  justify-content: center;
+  min-height: 5vh;
+  margin-top: 50px;
+}
 .copy-right {
   background-color: #000000;
   width: 100%;
-  min-height: 5vh;
+
   padding: 20px;
   color: #aaa;
   text-align: center;
   font-size: 1.2em;
 }
 
-footer {
-  display: flex;
-  justify-content: center;
-}
 .second {
   margin: 15px;
   color: #aaa;
