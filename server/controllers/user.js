@@ -49,14 +49,14 @@ const loginUser = async (req, res) => {
     if (userFound && (await bcrypt.compare(password, userFound.password))) {
       // Create token
       const token = jwt.sign(
-        { user_id: userFound._id, email },
+        { userId: userFound._id, email },
         process.env.TOKEN_KEY
       );
       console.log("token", token);
       // save user token
       user.token = token;
       // user
-      res.status(200).json({ msg: "Login successfully", userFound });
+      res.status(200).json({ msg: "Login successfully", token });
     } else {
       res.status(400).send("Invalid Credentials");
     }
