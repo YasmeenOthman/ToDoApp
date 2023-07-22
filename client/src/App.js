@@ -6,7 +6,6 @@ import SignUp from "./components/register/register.js";
 import Nav from "./components/NavBar/Nav.js";
 import HomePage from "./components/Pages/Home.js";
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -16,7 +15,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/task" element={<Task />} />
-       
+
         {/* <Route path="/comments/:category/:id" element={<Comments />} /> */}
       </Routes>
     </BrowserRouter>

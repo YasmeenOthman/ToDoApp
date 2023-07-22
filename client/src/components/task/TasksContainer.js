@@ -2,7 +2,8 @@ import React from "react";
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
-const TasksContainer = (props) => {
+const TasksContainer = ({ tasks }) => {
+  console.log(tasks);
   const dragItem = useRef();
   const dragOverItem = useRef();
   // We'll use the useRef hook to hold the item we're dragging located, then we'll use onDragStart to drag it and paste it to all the items in this list:
@@ -20,12 +21,16 @@ const TasksContainer = (props) => {
       <div className="pending__wrapper">
         <h3>Pending Tasks</h3>
         <div className="pending__container">
-          <div className="pending__items" draggable>
-            <p>Pending Tasks</p>
-            <p className="comment">
-              <Link to="/comments">2 Comments</Link>
-            </p>
-          </div>
+          {tasks.map((task) => {
+            return (
+              <div className="pending__items" draggable>
+                <p>{task.text}</p>
+                <p className="comment">
+                  <Link to="/comments">2 Comments</Link>
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="ongoing__wrapper">

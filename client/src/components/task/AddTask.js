@@ -1,38 +1,16 @@
 import React, { useState } from "react";
-import axios from "axios";
-import jwt_decode from "jwt-decode";
 
-const AddTask = () => {
-  const [task, setTask] = useState("");
-  let token = localStorage.getItem("usertoken");
-
+const AddTask = ({ addNewTask, handleTaskText, task }) => {
   function handleChange(e) {
-    setTask(e.target.value, () => {
-      console.log(task);
-    });
+    handleTaskText(e.target.value);
   }
-
-  function addNewTask(e) {
-    e.preventDefault();
-
-    axios
-      .post(
-        "http://localhost:8000/task/create",
-        { text: task },
-        { headers: { Authorization: `Bearer ${token} ` } }
-      )
-      .then((res) => {
-        console.log(res);
-        setTask("");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  function handleClick(e) {
+    addNewTask();
   }
 
   return (
     <>
-      <form className="form__input" onSubmit={addNewTask}>
+      <form className="form__input" onSubmit={handleClick}>
         <input
           type="text"
           name="task"
