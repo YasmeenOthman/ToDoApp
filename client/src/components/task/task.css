@@ -44,7 +44,9 @@
   box-shadow: 3px 5px 10px #35523c;
   width: 5%;
 }
-
+.addTodoBtn:hover {
+  background-color: #6fb96e;
+}
 .container {
   width: 80%;
   min-height: 100%;
