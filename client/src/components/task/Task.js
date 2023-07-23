@@ -11,12 +11,27 @@ const Task = () => {
   let [tasks, setTasks] = useState([]);
   let token = localStorage.getItem("token");
 
-  if (!token) {
-    alert("Token error");
-  }
+  // Add a useEffect hook to fetch tasks once the component mounts or whenever the token or userId changes
+
   let decodedToken = jwt_decode(token);
   let userId = decodedToken.userId;
 
+  useEffect(() => {
+    if (!token) {
+      alert("Token error");
+      return;
+    }
+    axios
+      .get(`http://localhost:8000/task/${userId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        setTasks(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [token, userId]);
   function handleTaskText(text) {
     setTask(text);
   }
@@ -28,7 +43,18 @@ const Task = () => {
         { headers: { Authorization: `Bearer ${token} ` } }
       )
       .then((res) => {
-        console.log(res);
+        console.log("task added successfully");
+        axios
+          .get(`http://localhost:8000/task/${userId}`, {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((res) => {
+            setTasks((prevTasks) => [...prevTasks, res.data]);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+
         setTask("");
       })
       .catch((err) => {
@@ -36,17 +62,6 @@ const Task = () => {
       });
   }
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8000/task/${userId}`)
-      .then((res) => {
-        setTasks([...res.data]);
-        console.log(tasks);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
   return (
     <div className="taskComponent">
       <AddTask
