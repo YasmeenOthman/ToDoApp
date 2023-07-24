@@ -43,7 +43,7 @@ const Task = () => {
         { headers: { Authorization: `Bearer ${token} ` } }
       )
       .then((res) => {
-        console.log("task added successfully");
+        // console.log("task added successfully");
         axios
           .get(`http://localhost:8000/task/${userId}`, {
             headers: { Authorization: `Bearer ${token}` },
