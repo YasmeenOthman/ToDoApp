@@ -1,16 +1,15 @@
-import React, { useState } from "react";
-
 const AddTask = ({ addNewTask, handleTaskText, task }) => {
   function handleChange(e) {
     handleTaskText(e.target.value);
   }
-  function handleClick(e) {
+  function handleSubmit(e) {
+    e.preventDefault();
     addNewTask();
   }
 
   return (
     <>
-      <form className="form__input" onSubmit={handleClick}>
+      <form className="form__input" onSubmit={handleSubmit}>
         <input
           type="text"
           name="task"

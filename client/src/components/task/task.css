@@ -29,7 +29,7 @@
   transition: 0.4s;
 }
 .taskInput:focus {
-  width: 50%;
+  /* width: 50%; */
   font-size: 1.4em;
 }
 .addTodoBtn {
@@ -130,7 +130,9 @@
 .completed__items {
   background-color: #6fb96e;
 }
-
+/* .btn-edit-delete {
+  margin-right: 0;
+} */
 .comment {
   text-align: right;
   position: absolute;

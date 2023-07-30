@@ -1,12 +1,13 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 
-const TasksContainer = ({ tasks }) => {
-  console.log(tasks);
+const TasksContainer = ({ tasks, handleDelete, handleEditTak }) => {
   const dragItem = useRef();
   const dragOverItem = useRef();
-  // We'll use the useRef hook to hold the item we're dragging located, then we'll use onDragStart to drag it and paste it to all the items in this list:
+  // We'll use the useRef hook to hold the item
+  //  we're dragging located, then we'll use onDragStart
+  // to drag it and paste it to all the items in this list:
   const dragStart = (e, position) => {
     dragItem.current = position;
     console.log(e.target.innerHTML);
@@ -16,6 +17,18 @@ const TasksContainer = ({ tasks }) => {
     console.log(e.target.innerHTML);
   };
 
+  async function handleDeleteClick(id) {
+    try {
+      await handleDelete(id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function handleEdit(taskId) {
+    alert("clicked,edit");
+    handleEditTak(taskId);
+  }
   return (
     <div className="container">
       <div className="pending__wrapper">
@@ -23,10 +36,22 @@ const TasksContainer = ({ tasks }) => {
         <div className="pending__container">
           {tasks.map((task) => {
             return (
-              <div className="pending__items" draggable>
+              <div key={task._id} className="pending__items" draggable>
                 <p>{task.text}</p>
                 <p className="comment">
-                  <Link to="/comments">2 Comments</Link>
+                  {/* <Link to="/comments">2 Comments</Link> */}
+                  <button
+                    className="btn-edit-delete"
+                    onClick={() => handleDeleteClick(task._id)}
+                  >
+                    delete
+                  </button>
+                  <button
+                    className="btn-edit-delete"
+                    onClick={() => handleEdit(task._id)}
+                  >
+                    edit
+                  </button>
                 </p>
               </div>
             );

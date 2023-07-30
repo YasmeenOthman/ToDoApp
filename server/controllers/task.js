@@ -63,23 +63,15 @@ const updateTask = async (req, res) => {
 // delete a specific task with a specific id
 const deleteTask = async (req, res) => {
   const id = req.params.id;
-  const userId = req.user.user_id; // get user ID from JWT token
-  // console.log(id);
-
   try {
     const task = await Task.findById(id);
-    console.log(task.author.id);
     if (!task) {
       return res.status(404).send("Task not found");
     }
-    if (!mongoose.Types.ObjectId.isValid(userId)) {
-      return res.status(400).send("Invalid user ID");
-    }
-    if (!task.author.id.equals(userId)) {
-      return res.status(403).send("You are not authorized to delete this task");
-    }
     const deletedValue = await Task.findByIdAndDelete(id);
-    res.send({ msg: "task deleted successfully", deletedValue });
+
+    let tasks = await Task.find();
+    res.send({ msg: "task deleted successfully", tasks });
   } catch (error) {
     res.send("Can not delete");
   }

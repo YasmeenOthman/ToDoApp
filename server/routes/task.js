@@ -8,7 +8,7 @@ const {
 } = require("../controllers/task");
 
 // CRUD operation
-router.get("/:authorId", getUserTasks);
+router.get("/:authorId", verifyToken, getUserTasks);
 router.post("/create", verifyToken, createTask);
 router.put("/update/:id", updateTask);
 router.delete("/delete/:id", deleteTask);
