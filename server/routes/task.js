@@ -10,6 +10,6 @@ const {
 // CRUD operation
 router.get("/:authorId", verifyToken, getUserTasks);
 router.post("/create", verifyToken, createTask);
-router.put("/update/:id", updateTask);
+router.put("/update/:id", verifyToken, updateTask);
 router.delete("/delete/:id", deleteTask);
 module.exports = router;

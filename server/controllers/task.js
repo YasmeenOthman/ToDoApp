@@ -23,9 +23,14 @@ const createTask = async (req, res) => {
 // Retrieve all tasks for specific user
 const getUserTasks = async (req, res) => {
   try {
+    console.log(req.user.userId);
     const authorId = req.params.authorId;
-    const tasks = await Task.find({ author: authorId });
-    res.send(tasks);
+    if (authorId === req.user.userId) {
+      const tasks = await Task.find({ author: authorId });
+      res.send(tasks);
+    } else {
+      res.send("The token id  not matched with the params id");
+    }
   } catch (error) {
     res.status(500).json({ msg: "Internal server error" });
     console.log(error, "error");
@@ -34,29 +39,19 @@ const getUserTasks = async (req, res) => {
 
 // update a specific task with a specific id
 const updateTask = async (req, res) => {
-  const updatedTask = req.body;
+  const updatedTaskText = req.body;
   const id = req.params.id;
-  const userId = req.user.user_id; // get user ID from JWT token
+
   try {
     const task = await Task.findById(id);
-    console.log(task.author.id);
     if (!task) {
       return res.status(404).send("Task not found");
     }
+    const newValue = await Task.findByIdAndUpdate(id, updatedTaskText);
 
-    if (!mongoose.Types.ObjectId.isValid(userId)) {
-      return res.status(400).send("Invalid user ID");
-    }
-    if (!task.author.id.equals(userId)) {
-      return res.status(403).send("You are not authorized to update this task");
-    }
-    // if (task.author.id !== userId) {
-    //   return res.status(403).send("You are not authorized to update this task");
-    // }
-    const newValue = await Task.findByIdAndUpdate(id, updatedTask);
     res.json({ msg: "updated successfully...", newValue });
   } catch (error) {
-    res.send("Can not update");
+    res.status(400).send("Can not update");
   }
 };
 
@@ -69,7 +64,6 @@ const deleteTask = async (req, res) => {
       return res.status(404).send("Task not found");
     }
     const deletedValue = await Task.findByIdAndDelete(id);
-
     let tasks = await Task.find();
     res.send({ msg: "task deleted successfully", tasks });
   } catch (error) {

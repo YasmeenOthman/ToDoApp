@@ -78,8 +78,28 @@ const Task = () => {
 
   // update function
   async function handleEditTak(taskId) {
+    let editedTask = prompt("edit the task");
     try {
-      let res = await axios.put(`http://localhost:8000/task/update/${taskId}`);
+      let res = await axios.put(
+        `http://localhost:8000/task/update/${taskId}`,
+        {
+          text: editedTask,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      setTasks((prevTasks) =>
+        prevTasks.map((task) => {
+          if (task._id === taskId) {
+            // Update the text property of the task with the edited value
+            return { ...task, text: editedTask };
+          } else {
+            return task;
+          }
+        })
+      );
     } catch (error) {
       alert("Can not edit please try again ");
     }
