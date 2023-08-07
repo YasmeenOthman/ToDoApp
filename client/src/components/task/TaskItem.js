@@ -1,24 +1,8 @@
 import React from "react";
-import { useRef } from "react";
-import { Link } from "react-router-dom";
 
-const TasksContainer = ({ tasks, handleDelete, handleEditTak }) => {
-  async function handleDeleteClick(id) {
-    try {
-      await handleDelete(id);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  function handleEdit(taskId) {
-    alert("clicked,edit");
-    handleEditTak(taskId);
-  }
+const TaskItem = () => {
   return (
     <div className="container">
-      {/* <h3>Pending Tasks</h3> */}
-
       {tasks.map((task) => {
         return (
           <div key={task._id} className="pending__items">
@@ -26,7 +10,6 @@ const TasksContainer = ({ tasks, handleDelete, handleEditTak }) => {
               <input type="checkbox" />
               <p>{task.text}</p>
             </div>
-
             <div className="buttons-section">
               <button
                 className="btn-delete"

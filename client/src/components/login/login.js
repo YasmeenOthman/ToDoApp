@@ -13,20 +13,21 @@ const Login = () => {
     const value = e.target.value;
     //👇🏻 update the state with the added values
     setUser({ ...user, [e.target.name]: value });
-    console.log(user);
   };
   function handleLogin(e) {
     e.preventDefault();
     axios
       .post("http://localhost:8000/user/login", user)
       .then((res) => {
-        console.log("login successfully", res);
+        alert("login successfully");
         //👇🏻 redirects to the Tasks page.
         localStorage.setItem("token", res.data.token);
         navigate("/task");
       })
       .catch((err) => {
-        console.log("Could not register", err);
+        alert(
+          "Could not login, make sure you have an account or you are using the right credential"
+        );
       });
   }
   return (

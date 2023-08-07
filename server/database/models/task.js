@@ -10,7 +10,7 @@ const taskSchema = new mongoose.Schema({
     },
   },
   author: { type: Schema.Types.ObjectId, ref: "user" },
-  // status: String,
+  status: { type: String, default: "pending" },
 });
 
 const Task = mongoose.model("Task", taskSchema);

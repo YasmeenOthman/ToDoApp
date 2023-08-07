@@ -5,6 +5,9 @@ import TasksContainer from "./TasksContainer";
 import AddTask from "./AddTask";
 import Footer from "../footer/Footer";
 import "./task.css";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { useDrop } from "react-dnd";
 
 const Task = () => {
   let [task, setTask] = useState("");
@@ -112,11 +115,14 @@ const Task = () => {
         addNewTask={addNewTask}
         handleTaskText={handleTaskText}
       />
-      <TasksContainer
-        tasks={tasks}
-        handleEditTak={handleEditTak}
-        handleDelete={handleDelete}
-      />
+
+      <DndProvider backend={HTML5Backend}>
+        <TasksContainer
+          tasks={tasks}
+          handleEditTak={handleEditTak}
+          handleDelete={handleDelete}
+        />
+      </DndProvider>
       <Footer />
     </div>
   );

@@ -12,19 +12,18 @@ const SignUp = () => {
     const value = e.target.value;
     //👇🏻 update the state with the added values
     setUser({ ...user, [e.target.name]: value });
-    console.log(user);
   };
   function handleSignUp(e) {
     e.preventDefault();
     axios
       .post("http://localhost:8000/user/signup", user)
       .then((res) => {
-        console.log("SignUp successfully", res);
+        alert("SignUp successfully");
         //👇🏻 redirects to the login page.
         navigate("/login");
       })
       .catch((err) => {
-        console.log("Could not register", err);
+        alert("Could not register");
       });
   }
 
