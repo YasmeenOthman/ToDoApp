@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import "./Nav.css";
 
 const Nav = () => {
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
   const navigate = useNavigate("");
   const token = localStorage.getItem("token");
 
@@ -21,7 +24,18 @@ const Nav = () => {
       <Link to="/">
         <h1>Plan Your Day...</h1>
       </Link>
-      <div>
+      {/* Conditionally render the menu icon */}
+      <div
+        className="menu-icon"
+        onClick={() => {
+          setIsNavExpanded(!isNavExpanded);
+          console.log(isNavExpanded);
+        }}
+      >
+        <FontAwesomeIcon icon={faBars} />
+      </div>
+
+      <div className={isNavExpanded ? "menu-expanded" : "menu-items"}>
         {token ? (
           <div>
             <Link to="/Task">
