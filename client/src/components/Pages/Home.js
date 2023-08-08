@@ -9,7 +9,10 @@ const HomePage = () => {
   return (
     <>
       <div className="homePage-container">
-        <Quote />
+        <div className="quote-section">
+          <Quote />
+        </div>
+
         <div className="HomePage-Body">
           <div className="section">
             <div className="bodyText">

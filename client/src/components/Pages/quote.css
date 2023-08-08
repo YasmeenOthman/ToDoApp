@@ -1,7 +1,8 @@
 /* Quote component style */
+
 .quoteContainer {
   border: none;
-  min-width: 70%;
+  width: 60%;
   height: 20vh;
   margin: 70px auto;
   background-color: black;
@@ -13,7 +14,7 @@
 .quoteBody {
   padding-top: 50px;
   font-family: var(--font-family);
-  font-size: 1.8em;
+  font-size: 1.4rem;
   text-align: center;
   min-height: 150px;
   animation: pageNameAnimation 5s forwards;
@@ -37,5 +38,11 @@
   100% {
     transform: scale(1.1);
     color: gold;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .quoteContainer {
+    width: 80%;
   }
 }

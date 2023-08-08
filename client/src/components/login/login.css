@@ -90,3 +90,23 @@
   background-color: #f09d4a;
   color: #fff;
 }
+
+@media screen and (max-width: 768px) {
+  .loginContainer {
+    flex-direction: column;
+
+    height: 100vh;
+  }
+  .formSection {
+    margin: 0 auto;
+    flex: auto;
+  }
+
+  .login__form {
+    width: 100%;
+    height: 100%;
+  }
+  .loginImageSection {
+    display: none;
+  }
+}
