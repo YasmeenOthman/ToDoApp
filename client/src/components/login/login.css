@@ -12,10 +12,11 @@
   display: flex;
 }
 .imageSection {
-  width: 50%;
+  width: 47%;
   background-image: url(https://i.pinimg.com/474x/e1/00/f5/e100f5b4baef724c2ec630bfb29e1375.jpg);
   background-position: center;
   background-size: cover;
+  margin-bottom: 10px;
 }
 .formSection {
   width: 50%;

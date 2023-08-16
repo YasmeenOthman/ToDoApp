@@ -11,11 +11,12 @@
 }
 
 .signupImageSection {
-  width: 50%;
+  width: 47%;
   background: url("https://i.pinimg.com/564x/9f/d5/7a/9fd57a834aaf04ee9df073255a4a3ee4.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  margin-bottom: 10px;
 }
 
 .signup__form {

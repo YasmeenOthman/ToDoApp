@@ -29,7 +29,6 @@ const Nav = () => {
         className="menu-icon"
         onClick={() => {
           setIsNavExpanded(!isNavExpanded);
-          console.log(isNavExpanded);
         }}
       >
         <FontAwesomeIcon icon={faBars} />
