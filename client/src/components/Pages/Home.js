@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import Quote from "./Quote";
-import Footer from "../footer/Footer";
+import Footer from "../Footer/Footer";
 import "./Home.css";
 import CalendarComponent from "../CalendarComponent";
 

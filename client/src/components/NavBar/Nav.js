@@ -14,6 +14,7 @@ const Nav = () => {
     if (token) {
       localStorage.removeItem("token");
       navigate("/");
+      setIsNavExpanded(!isNavExpanded);
     } else {
       return;
     }
@@ -38,7 +39,14 @@ const Nav = () => {
         {token ? (
           <div>
             <Link to="/Task">
-              <button className="btn">Your Tasks</button>
+              <button
+                className="btn"
+                onClick={() => {
+                  setIsNavExpanded(!isNavExpanded);
+                }}
+              >
+                Your Tasks
+              </button>
             </Link>
             <Link to="/">
               <button onClick={handleLogOut} className="btn">
@@ -49,10 +57,24 @@ const Nav = () => {
         ) : (
           <div>
             <Link to="/login">
-              <button className="btn">Login</button>
+              <button
+                className="btn"
+                onClick={() => {
+                  setIsNavExpanded(!isNavExpanded);
+                }}
+              >
+                Login
+              </button>
             </Link>
             <Link to="/signup">
-              <button className="btn">SignUp</button>
+              <button
+                className="btn"
+                onClick={() => {
+                  setIsNavExpanded(!isNavExpanded);
+                }}
+              >
+                SignUp
+              </button>
             </Link>
           </div>
         )}

@@ -3,7 +3,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import TasksContainer from "./TasksContainer";
 import AddTask from "./AddTask";
-import Footer from "../footer/Footer";
+import Footer from "../Footer/Footer";
 import "./task.css";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -44,7 +44,7 @@ const Task = () => {
         { text: task },
         { headers: { Authorization: `Bearer ${token} ` } }
       );
-      console.log(res);
+
       // Make another API call to get updated tasks list after adding the new task
       const updatedTasks = await axios.get(
         `http://localhost:8000/task/${userId}`,
@@ -57,7 +57,7 @@ const Task = () => {
       // Reset the task state to an empty string after adding the task
       setTask("");
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   }
 
