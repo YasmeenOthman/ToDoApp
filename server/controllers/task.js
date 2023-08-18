@@ -5,14 +5,11 @@ const user = require("../database/models/user");
 // Create a new task
 const createTask = async (req, res) => {
   let { text, date } = req.body;
-  // get the author data from the jwt(auth)
   let authorId = {
     id: req.user.userId,
   };
-  console.log("authorId", authorId);
+
   try {
-    // let authorFound = await user.findById(authorId.id);
-    // let authorName = authorFound.username;
     const newTask = await Task.create({ text, date, author: authorId.id });
 
     res.send(`New task "${newTask.text}" created by ${newTask.author}`);
@@ -23,7 +20,6 @@ const createTask = async (req, res) => {
 // Retrieve all tasks for specific user
 const getUserTasks = async (req, res) => {
   try {
-    console.log(req.user.userId);
     const authorId = req.params.authorId;
     if (authorId === req.user.userId) {
       const tasks = await Task.find({ author: authorId });
@@ -40,8 +36,8 @@ const getUserTasks = async (req, res) => {
 // update a specific task with a specific id
 const updateTask = async (req, res) => {
   const updatedTaskText = req.body;
-  const id = req.params.id;
-
+  const id = req.params.taskId;
+  // console.log("id is ", id);
   try {
     const task = await Task.findById(id);
     if (!task) {
@@ -71,4 +67,22 @@ const deleteTask = async (req, res) => {
   }
 };
 
-module.exports = { createTask, getUserTasks, deleteTask, updateTask };
+// get one specific tasks
+const getTask = async (req, res) => {
+  try {
+    let id = req.params.taskId;
+    console.log(id);
+    let task = await Task.findById(id);
+
+    if (!task) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+
+    res.status(200).json(task);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+module.exports = { createTask, getUserTasks, deleteTask, updateTask, getTask };

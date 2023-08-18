@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import EditTask from "./EditTask";
 
-const TasksContainer = ({ tasks, handleDelete, handleEditTak }) => {
+const TasksContainer = ({ tasks, handleDelete, handleEditTask }) => {
   async function handleDeleteClick(id) {
     try {
       await handleDelete(id);
@@ -11,8 +12,7 @@ const TasksContainer = ({ tasks, handleDelete, handleEditTak }) => {
   }
 
   function handleEdit(taskId) {
-    alert("clicked,edit");
-    handleEditTak(taskId);
+    handleEditTask(taskId);
   }
   return (
     <div className="container">

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import TasksContainer from "./TasksContainer";
 import AddTask from "./AddTask";
 import Footer from "../Footer/Footer";
 import "./task.css";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { useDrop } from "react-dnd";
+import EditTask from "./EditTask";
 
 const Task = () => {
+  const navigate = useNavigate("");
   let [task, setTask] = useState("");
   let [tasks, setTasks] = useState([]);
   let token = localStorage.getItem("token");
@@ -80,32 +80,9 @@ const Task = () => {
   }
 
   // update function
-  async function handleEditTak(taskId) {
-    let editedTask = prompt("edit the task");
-    try {
-      let res = await axios.put(
-        `http://localhost:8000/task/update/${taskId}`,
-        {
-          text: editedTask,
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-
-      setTasks((prevTasks) =>
-        prevTasks.map((task) => {
-          if (task._id === taskId) {
-            // Update the text property of the task with the edited value
-            return { ...task, text: editedTask };
-          } else {
-            return task;
-          }
-        })
-      );
-    } catch (error) {
-      alert("Can not edit please try again ");
-    }
+  async function handleEditTask(taskId) {
+    // pass the task id to edit component
+    navigate(`/edit/${taskId}`, { state: taskId });
   }
 
   return (
@@ -116,13 +93,12 @@ const Task = () => {
         handleTaskText={handleTaskText}
       />
 
-      <DndProvider backend={HTML5Backend}>
-        <TasksContainer
-          tasks={tasks}
-          handleEditTak={handleEditTak}
-          handleDelete={handleDelete}
-        />
-      </DndProvider>
+      <TasksContainer
+        tasks={tasks}
+        handleEditTask={handleEditTask}
+        handleDelete={handleDelete}
+      />
+
       <Footer />
     </div>
   );
