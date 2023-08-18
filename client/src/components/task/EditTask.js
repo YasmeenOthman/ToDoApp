@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import "./EditTask.css";
 
 const EditTask = () => {
   const { taskId } = useParams();
@@ -14,7 +15,6 @@ const EditTask = () => {
         const response = await axios.get(
           `http://localhost:8000/task/edit/${taskId}`
         );
-        console.log("response", response);
         setEditedTask(response.data.text);
       } catch (error) {
         console.log(error);
@@ -41,32 +41,25 @@ const EditTask = () => {
         value={editedTask}
         onChange={(e) => setEditedTask(e.target.value)}
       />
-      <input type="date" placeholder="Due Date" />
-      <div className="subtasks">
-        <h4>Subtasks</h4>
-        <div className="subtask">
-          <input type="checkbox" />
-          <input type="text" placeholder="Subtask Title" />
-        </div>
-        {/* Add Subtask Button */}
-      </div>
-      <div className="attachments">
-        <h4>Attachments</h4>
-        <div className="attachment">
-          <input type="text" placeholder="Attachment URL" />
-        </div>
-        {/* Add Attachment Button */}
-      </div>
-      <div className="comments">
-        <h4>Comments</h4>
-        <div className="comment">
-          <textarea placeholder="Add a comment..."></textarea>
-        </div>
-        {/* Add Comment Button */}
-      </div>
-      <textarea placeholder="Notes"></textarea>
 
-      <button onClick={handleSave}>Save</button>
+      <div className="quick-actions">
+        <h3>Quick Actions</h3>
+        <button> Add CheckList</button>
+        <button> Add Attachment</button>
+      </div>
+      <div className="task-description">
+        <textarea input="text" placeholder="Add task description ..." />
+      </div>
+      <div>
+        <h3>Start date</h3>
+        <input type="date" placeholder="Due Date" />
+        <h3>Due Date</h3>
+        <input type="date" placeholder="Due Date" />
+      </div>
+
+      <button onClick={handleSave} className="save-button">
+        Save
+      </button>
     </div>
   );
 };
