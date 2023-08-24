@@ -1,0 +1,55 @@
+/* NotFound.css */
+
+.pageNotFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 88vh;
+  background-color: #f0f0f0;
+}
+
+.pageNotFound > div {
+  text-align: center;
+  padding: 50px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.NotFoundMessage {
+  font-size: 5rem;
+  color: gold;
+}
+
+.NotFoundMessage span {
+  color: #ffbd69;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #555;
+}
+
+p {
+  font-size: 1rem;
+  color: #888;
+  margin-top: 5px;
+}
+
+.notFound-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: gold;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1.25rem;
+}
+
+.notFound-btn:hover {
+  background-color: #000000;
+  color: gold;
+}

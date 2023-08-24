@@ -1,10 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "./NotFound.css";
 
 const NotFoundPage = () => {
   return (
-    <div>
-      <h1>Page Not Found</h1>
-      <p>Sorry, the page you are looking for does not exist.</p>
+    <div className="pageNotFound">
+      <div>
+        <h1 className="NotFoundMessage">
+          OOPS <span>!</span>
+        </h1>
+        <h2>Something's Not Right.</h2>
+        <p>
+          Please check the URL again or let us take you back to the homepage{" "}
+        </p>
+        <Link to="/">
+          <button className="notFound-btn"> Back To Homepage </button>
+        </Link>
+      </div>
     </div>
   );
 };
