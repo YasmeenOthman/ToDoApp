@@ -52,7 +52,6 @@ const loginUser = async (req, res) => {
         { userId: userFound._id, email },
         process.env.TOKEN_KEY
       );
-      console.log("token", token);
       // save user token
       user.token = token;
       // user

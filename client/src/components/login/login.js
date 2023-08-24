@@ -22,7 +22,7 @@ const Login = () => {
         alert("login successfully");
         //👇🏻 redirects to the Tasks page.
         localStorage.setItem("token", res.data.token);
-        navigate("/task");
+        navigate("/");
       })
       .catch((err) => {
         alert(

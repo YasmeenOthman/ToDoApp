@@ -1,8 +1,11 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+// import { Link, useNavigate } from "react-router-dom";
 import EditTask from "./EditTask";
+import { useSelector } from "react-redux";
 
-const TasksContainer = ({ tasks, handleDelete, handleEditTask }) => {
+const TasksContainer = ({ handleDelete, handleEditTask }) => {
+  let tasks = useSelector((state) => state.tasks.tasks);
+
   async function handleDeleteClick(id) {
     try {
       await handleDelete(id);

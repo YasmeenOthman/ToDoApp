@@ -37,7 +37,6 @@ const getUserTasks = async (req, res) => {
 const updateTask = async (req, res) => {
   const updatedTaskText = req.body;
   const id = req.params.taskId;
-  // console.log("id is ", id);
   try {
     const task = await Task.findById(id);
     if (!task) {

@@ -7,11 +7,16 @@ import AddTask from "./AddTask";
 import Footer from "../Footer/Footer";
 import "./task.css";
 import EditTask from "./EditTask";
+import { useSelector, useDispatch } from "react-redux";
+import { setTasks } from "../../slices/tasksSlice";
 
 const Task = () => {
+  let tasks = useSelector((state) => state.tasks.tasks);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate("");
-  let [task, setTask] = useState("");
-  let [tasks, setTasks] = useState([]);
+
+  const [showEditOverlay, setShowEditOverlay] = useState(false);
   let token = localStorage.getItem("token");
   let decodedToken = jwt_decode(token);
   let userId = decodedToken.userId;
@@ -26,40 +31,12 @@ const Task = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        setTasks(res.data);
+        dispatch(setTasks(res.data));
       })
       .catch((err) => {
         console.log(err);
       });
   }, [token, userId]);
-
-  function handleTaskText(value) {
-    setTask(value);
-  }
-
-  async function addNewTask() {
-    try {
-      const res = await axios.post(
-        "http://localhost:8000/task/create",
-        { text: task },
-        { headers: { Authorization: `Bearer ${token} ` } }
-      );
-
-      // Make another API call to get updated tasks list after adding the new task
-      const updatedTasks = await axios.get(
-        `http://localhost:8000/task/${userId}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-
-      setTasks(updatedTasks.data);
-      // Reset the task state to an empty string after adding the task
-      setTask("");
-    } catch (err) {
-      alert(err);
-    }
-  }
 
   // delete a specific task
   async function handleDelete(taskId) {
@@ -82,23 +59,19 @@ const Task = () => {
   // update function
   async function handleEditTask(taskId) {
     // pass the task id to edit component
-    navigate(`/edit/${taskId}`, { state: taskId });
+    navigate(`/edit/${taskId}`);
   }
-
+  const closeEditOverlay = () => {
+    setShowEditOverlay(!showEditOverlay);
+  };
   return (
     <div className="taskComponent">
-      <AddTask
-        task={task}
-        addNewTask={addNewTask}
-        handleTaskText={handleTaskText}
-      />
-
+      <AddTask />
       <TasksContainer
-        tasks={tasks}
         handleEditTask={handleEditTask}
         handleDelete={handleDelete}
       />
-
+      {showEditOverlay && <EditTask closeEditOverlay={closeEditOverlay} />}
       <Footer />
     </div>
   );

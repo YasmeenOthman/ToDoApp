@@ -3,7 +3,6 @@ import React from "react";
 import Quote from "./Quote";
 import Footer from "../Footer/Footer";
 import "./Home.css";
-import CalendarComponent from "../CalendarComponent";
 
 const HomePage = () => {
   return (
@@ -27,10 +26,10 @@ const HomePage = () => {
               </p>
             </div>
             {/* <CalendarComponent /> */}
-            <img src="./assets/4.gif" />
+            <img src="./assets/4.gif" alt="homePageImage" />
           </div>
           <div className="section">
-            <img src="./assets/3.gif" />
+            <img src="./assets/3.gif" alt="homePageImage" />
             <div className="bodyText">
               <h2 className="lowerText">Plan Your Day .....</h2>
               <p className="lowerText2">

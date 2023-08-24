@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "./EditTask.css";
 
-const EditTask = () => {
+const EditTask = ({ closeEditOverlay }) => {
   const { taskId } = useParams();
   const [editedTask, setEditedTask] = useState("");
   const navigate = useNavigate("");
@@ -28,6 +28,7 @@ const EditTask = () => {
       await axios.put(`http://localhost:8000/task/update/${taskId}`, {
         text: editedTask,
       });
+      closeEditOverlay();
       navigate("/task");
     } catch (error) {
       alert("Failed to update the task. Please try again.");
@@ -37,6 +38,7 @@ const EditTask = () => {
   return (
     <div className="edit-task-form">
       <input
+        className="task-text"
         type="text"
         value={editedTask}
         onChange={(e) => setEditedTask(e.target.value)}
