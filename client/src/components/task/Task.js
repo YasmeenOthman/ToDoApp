@@ -11,12 +11,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setTasks } from "../../slices/tasksSlice";
 
 const Task = () => {
-  let tasks = useSelector((state) => state.tasks.tasks);
-
   const dispatch = useDispatch();
-  const navigate = useNavigate("");
 
-  const [showEditOverlay, setShowEditOverlay] = useState(false);
   let token = localStorage.getItem("token");
   let decodedToken = jwt_decode(token);
   let userId = decodedToken.userId;
@@ -38,25 +34,11 @@ const Task = () => {
       });
   }, [token, userId]);
 
-  // delete a specific task
- 
-
-  // update function
-  async function handleEditTask(taskId) {
-    // pass the task id to edit component
-    navigate(`/edit/${taskId}`);
-  }
-  const closeEditOverlay = () => {
-    setShowEditOverlay(!showEditOverlay);
-  };
   return (
     <div className="taskComponent">
       <AddTask />
-      <TasksContainer
-        handleEditTask={handleEditTask}
-      
-      />
-      {showEditOverlay && <EditTask closeEditOverlay={closeEditOverlay} />}
+      <TasksContainer />
+
       <Footer />
     </div>
   );

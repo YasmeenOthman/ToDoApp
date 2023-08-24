@@ -7,28 +7,25 @@ export const tasksSlice = createSlice({
     setTasks: (state, action) => {
       state.tasks = action.payload;
     },
+    updateNewTaskText: (state, action) => {
+      state.newTaskText = action.payload;
+    },
+    updateTask: (state, action) => {
+      const { taskId, editedTask } = action.payload;
+      const updatedTasks = state.tasks.map((task) =>
+        task._id === taskId ? { ...task, text: editedTask } : task
+      );
 
-    // updateTask: (state, action) => {
-    //   const updatedTask = action.payload;
-    //   const index = state.tasks.findIndex(
-    //     (task) => task._id === updatedTask._id
-    //   );
-    //   if (index !== -1) {
-    //     state.tasks[index] = updatedTask;
-    //   }
-    // },
+      state.tasks = updatedTasks;
+    },
 
     deleteTask: (state, action) => {
       state.tasks = state.tasks.filter((task) => task._id !== action.payload);
     },
-    updateNewTaskText: (state, action) => {
-      state.newTaskText = action.payload;
-    },
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { setTasks, addTask, updateTask, deleteTask, updateNewTaskText } =
+export const { setTasks, updateTask, deleteTask, updateNewTaskText } =
   tasksSlice.actions;
 
 export default tasksSlice.reducer;

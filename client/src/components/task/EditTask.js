@@ -2,19 +2,21 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "./EditTask.css";
+import { useDispatch } from "react-redux";
+import { updateTask } from "../../slices/tasksSlice";
 
-const EditTask = ({ closeEditOverlay }) => {
-  const { taskId } = useParams();
+const EditTask = ({ taskId, closeEditOverlay }) => {
+  const dispatch = useDispatch();
   const [editedTask, setEditedTask] = useState("");
-  const navigate = useNavigate("");
 
   useEffect(() => {
-    // Fetch task data based on taskId
+    // Fetch the task data that needs to be updated  based on taskId
     async function fetchTask() {
       try {
         const response = await axios.get(
           `http://localhost:8000/task/edit/${taskId}`
         );
+        // to render the task data in the edit form
         setEditedTask(response.data.text);
       } catch (error) {
         console.log(error);
@@ -28,11 +30,15 @@ const EditTask = ({ closeEditOverlay }) => {
       await axios.put(`http://localhost:8000/task/update/${taskId}`, {
         text: editedTask,
       });
+      dispatch(updateTask({ taskId, editedTask }));
       closeEditOverlay();
-      navigate("/task");
     } catch (error) {
       alert("Failed to update the task. Please try again.");
     }
+  }
+
+  function handleCancel() {
+    closeEditOverlay();
   }
 
   return (
@@ -42,6 +48,7 @@ const EditTask = ({ closeEditOverlay }) => {
         type="text"
         value={editedTask}
         onChange={(e) => setEditedTask(e.target.value)}
+        required
       />
 
       <div className="quick-actions">
@@ -58,10 +65,14 @@ const EditTask = ({ closeEditOverlay }) => {
         <h3>Due Date</h3>
         <input type="date" placeholder="Due Date" />
       </div>
-
-      <button onClick={handleSave} className="save-button">
-        Save
-      </button>
+      <div>
+        <button onClick={handleSave} className="save-button">
+          Save
+        </button>
+        <button onClick={handleCancel} className="save-button">
+          cancel
+        </button>
+      </div>
     </div>
   );
 };

@@ -70,7 +70,7 @@ const deleteTask = async (req, res) => {
 const getTask = async (req, res) => {
   try {
     let id = req.params.taskId;
-    console.log(id);
+
     let task = await Task.findById(id);
 
     if (!task) {

@@ -1,12 +1,25 @@
-import React from "react";
-import EditTask from "./EditTask";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTask, setTasks } from "../../slices/tasksSlice";
+import { deleteTask } from "../../slices/tasksSlice";
 import axios from "axios";
+import EditTask from "./EditTask";
 
-const TasksContainer = ({ handleEditTask }) => {
+const TasksContainer = () => {
+  // tasks state  from redux store
   let tasks = useSelector((state) => state.tasks.tasks);
   const dispatch = useDispatch();
+  const [editingTaskId, setEditingTaskId] = useState(null);
+  const [showEditOverlay, setShowEditOverlay] = useState(false);
+
+  const handleEdit = (taskId) => {
+    setEditingTaskId(taskId);
+    setShowEditOverlay(true);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingTaskId(null);
+    setShowEditOverlay(false);
+  };
 
   // -----Delete a specific task---------------
   async function handleDelete(taskId) {
@@ -24,12 +37,8 @@ const TasksContainer = ({ handleEditTask }) => {
     }
   }
 
-  function handleEdit(taskId) {
-    handleEditTask(taskId);
-  }
   return (
     <div className="container">
-      {/* <h3>Pending Tasks</h3> */}
       {tasks && tasks.length === 0 ? (
         <p>No tasks to display yet...</p>
       ) : (
@@ -58,6 +67,9 @@ const TasksContainer = ({ handleEditTask }) => {
             </div>
           );
         })
+      )}
+      {showEditOverlay && (
+        <EditTask taskId={editingTaskId} closeEditOverlay={handleCancelEdit} />
       )}
     </div>
   );
