@@ -18,11 +18,10 @@ export const tasksSlice = createSlice({
     //   }
     // },
 
-    // deleteTask: (state, action) => {
-    //   return state.tasks.filter((task) => task._id !== action.payload);
-    // },
+    deleteTask: (state, action) => {
+      state.tasks = state.tasks.filter((task) => task._id !== action.payload);
+    },
     updateNewTaskText: (state, action) => {
-      console.log(action.payload);
       state.newTaskText = action.payload;
     },
   },

@@ -39,22 +39,7 @@ const Task = () => {
   }, [token, userId]);
 
   // delete a specific task
-  async function handleDelete(taskId) {
-    try {
-      if (window.confirm("You are going to delete the tasks, are you sure?")) {
-        let res = await axios.delete(
-          `http://localhost:8000/task/delete/${taskId}`
-        );
-        alert(res.data.msg);
-        // Update tasks state locally by filtering out the deleted task
-        setTasks((prevTasks) =>
-          prevTasks.filter((task) => task._id !== taskId)
-        );
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
+ 
 
   // update function
   async function handleEditTask(taskId) {
@@ -69,7 +54,7 @@ const Task = () => {
       <AddTask />
       <TasksContainer
         handleEditTask={handleEditTask}
-        handleDelete={handleDelete}
+      
       />
       {showEditOverlay && <EditTask closeEditOverlay={closeEditOverlay} />}
       <Footer />

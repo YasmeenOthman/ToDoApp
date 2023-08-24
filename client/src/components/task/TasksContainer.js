@@ -1,14 +1,24 @@
 import React from "react";
-// import { Link, useNavigate } from "react-router-dom";
 import EditTask from "./EditTask";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTask, setTasks } from "../../slices/tasksSlice";
+import axios from "axios";
 
-const TasksContainer = ({ handleDelete, handleEditTask }) => {
+const TasksContainer = ({ handleEditTask }) => {
   let tasks = useSelector((state) => state.tasks.tasks);
+  const dispatch = useDispatch();
 
-  async function handleDeleteClick(id) {
+  // -----Delete a specific task---------------
+  async function handleDelete(taskId) {
     try {
-      await handleDelete(id);
+      if (window.confirm("You are going to delete the tasks, are you sure?")) {
+        let res = await axios.delete(
+          `http://localhost:8000/task/delete/${taskId}`
+        );
+        alert(res.data.msg);
+        // Update tasks state locally by filtering out the deleted task
+        dispatch(deleteTask(taskId));
+      }
     } catch (error) {
       console.log(error);
     }
@@ -20,7 +30,7 @@ const TasksContainer = ({ handleDelete, handleEditTask }) => {
   return (
     <div className="container">
       {/* <h3>Pending Tasks</h3> */}
-      {tasks.length === 0 ? (
+      {tasks && tasks.length === 0 ? (
         <p>No tasks to display yet...</p>
       ) : (
         tasks.map((task) => {
@@ -34,7 +44,7 @@ const TasksContainer = ({ handleDelete, handleEditTask }) => {
               <div className="buttons-section">
                 <button
                   className="btn-delete"
-                  onClick={() => handleDeleteClick(task._id)}
+                  onClick={() => handleDelete(task._id)}
                 >
                   delete
                 </button>
