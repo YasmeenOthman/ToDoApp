@@ -5,9 +5,9 @@ import "./NotFound.css";
 const NotFoundPage = () => {
   return (
     <div className="pageNotFound">
-      <div>
-        <h1 className="NotFoundMessage">
-          OOPS <span>!</span>
+      <div className="NotFoundMessage">
+        <h1>
+          OOPS... <span>!</span>
         </h1>
         <h2>Something's Not Right.</h2>
         <p>

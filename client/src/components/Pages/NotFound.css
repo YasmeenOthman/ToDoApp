@@ -10,28 +10,28 @@
 
 .pageNotFound > div {
   text-align: center;
-  padding: 50px;
+  padding: 30px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .NotFoundMessage {
-  font-size: 5rem;
+  font-size: 3rem;
   color: gold;
 }
 
 .NotFoundMessage span {
-  color: #ffbd69;
+  color:  gold;
 }
 
-h2 {
+.NotFoundMessage h2 {
   font-size: 1.5rem;
   margin-top: 10px;
   color: #555;
 }
 
-p {
+.NotFoundMessage p {
   font-size: 1rem;
   color: #888;
   margin-top: 5px;

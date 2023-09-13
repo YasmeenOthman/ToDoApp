@@ -50,7 +50,8 @@ const loginUser = async (req, res) => {
       // Create token
       const token = jwt.sign(
         { userId: userFound._id, email },
-        process.env.TOKEN_KEY
+        process.env.TOKEN_KEY,
+        { expiresIn: "12h" }
       );
       // save user token
       user.token = token;

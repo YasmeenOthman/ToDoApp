@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
 import "./EditTask.css";
 import { useDispatch } from "react-redux";
 import { updateTask } from "../../slices/tasksSlice";
@@ -26,14 +25,22 @@ const EditTask = ({ taskId, closeEditOverlay }) => {
   }, [taskId]);
 
   async function handleSave() {
-    try {
-      await axios.put(`http://localhost:8000/task/update/${taskId}`, {
-        text: editedTask,
-      });
-      dispatch(updateTask({ taskId, editedTask }));
-      closeEditOverlay();
-    } catch (error) {
-      alert("Failed to update the task. Please try again.");
+    // Trim the editedTask to remove leading and trailing whitespace
+    const trimmedTask = editedTask.trim();
+
+    if (trimmedTask === "") {
+      // If the trimmed task is empty, display an error message and do not proceed with the update
+      alert("Task text cannot be empty.");
+    } else {
+      try {
+        await axios.put(`http://localhost:8000/task/update/${taskId}`, {
+          text: editedTask,
+        });
+        dispatch(updateTask({ taskId, editedTask }));
+        closeEditOverlay();
+      } catch (error) {
+        alert("Failed to update the task. Please try again.");
+      }
     }
   }
 
@@ -43,33 +50,47 @@ const EditTask = ({ taskId, closeEditOverlay }) => {
 
   return (
     <div className="edit-task-form">
+      <h1 className="edit-form-header">Edit Form</h1>
+      <h3 className="edit-headers">Task</h3>
       <input
-        className="task-text"
+        className="task-text edit-inputs"
         type="text"
         value={editedTask}
         onChange={(e) => setEditedTask(e.target.value)}
-        required
       />
-
+      <hr />
       <div className="quick-actions">
-        <h3>Quick Actions</h3>
-        <button> Add CheckList</button>
-        <button> Add Attachment</button>
+        <h3 className="edit-headers">Quick Actions</h3>
+        <button className="edit-buttons"> Add CheckList</button>
+        <button className="edit-buttons"> Add Attachment</button>
       </div>
+      <hr />
       <div className="task-description">
-        <textarea input="text" placeholder="Add task description ..." />
+        <h3 className="edit-headers">Task Description</h3>
+        <textarea
+          input="text"
+          placeholder="Add task description ..."
+          className="edit-inputs"
+        />
       </div>
-      <div>
-        <h3>Start date</h3>
-        <input type="date" placeholder="Due Date" />
-        <h3>Due Date</h3>
-        <input type="date" placeholder="Due Date" />
+      <hr />
+      <div className="dates">
+        <div className="dates-col1">
+          {" "}
+          <h3 className="edit-headers">Start date</h3>
+          <input className=" dates-inputs" type="date" placeholder="Due Date" />
+        </div>
+        <div className="dates-col2">
+          <h3 className="edit-headers">Due Date</h3>
+          <input className=" dates-inputs" type="date" placeholder="Due Date" />
+        </div>
       </div>
-      <div>
-        <button onClick={handleSave} className="save-button">
+      <hr />
+      <div className="buttons">
+        <button onClick={handleSave} className="save-button ">
           Save
         </button>
-        <button onClick={handleCancel} className="save-button">
+        <button onClick={handleCancel} className="cancel-button ">
           cancel
         </button>
       </div>
