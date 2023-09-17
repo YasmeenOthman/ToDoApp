@@ -38,8 +38,6 @@ const Task = () => {
     <div className="taskComponent">
       <AddTask />
       <TasksContainer />
-
-      <Footer />
     </div>
   );
 };

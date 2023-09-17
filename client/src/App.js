@@ -7,6 +7,7 @@ import Nav from "./components/NavBar/Nav.js";
 import HomePage from "./components/Pages/Home.js";
 import EditTask from "./components/task/EditTask";
 import NotFoundPage from "./components/Pages/NotFoundPage";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/edit" element={<EditTask />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
