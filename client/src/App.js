@@ -7,7 +7,7 @@ import Nav from "./components/NavBar/Nav.js";
 import HomePage from "./components/Pages/Home.js";
 import EditTask from "./components/task/EditTask";
 import NotFoundPage from "./components/Pages/NotFoundPage";
-import Footer from "./components/Footer/Footer";
+import Footer from "./components/footer/footer";
 
 function App() {
   return (

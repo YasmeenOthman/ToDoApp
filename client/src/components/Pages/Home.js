@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import Quote from "./Quote";
-import Footer from "../Footer/Footer";
+
 import "./Home.css";
 
 const HomePage = () => {
+  const token = localStorage.getItem("token");
   return (
     <>
       <div className="homePage-container">
@@ -37,9 +38,15 @@ const HomePage = () => {
                 it a try!
               </p>
               <div className="homePageRegisterButton">
-                <button>
-                  <Link to="/signup">Sign Up</Link>
-                </button>
+                {!token ? (
+                  <button>
+                    <Link to="/signup">Sign Up</Link>
+                  </button>
+                ) : (
+                  <button>
+                    <Link to="/Task">Start...</Link>
+                  </button>
+                )}
               </div>
             </div>
           </div>

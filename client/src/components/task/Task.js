@@ -4,7 +4,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import TasksContainer from "./TasksContainer";
 import AddTask from "./AddTask";
-import Footer from "../Footer/Footer";
+
 import "./task.css";
 import EditTask from "./EditTask";
 import { useSelector, useDispatch } from "react-redux";
