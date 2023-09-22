@@ -1,24 +1,24 @@
 .edit-task-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   width: 50%;
-  height: auto;
+  height: 90vh;
+  overflow-y: scroll;
   gap: 20px;
   padding: 30px;
-  /* background: linear-gradient(white, rgb(91, 91, 91, 0.5), rgb(0, 0, 0)); */
   background-color: rgba(0, 0, 0, 0.89);
   position: absolute;
-  top: 5%;
+  top: 15%;
   left: 25%;
   z-index: 999;
   border-radius: 0.7rem;
 }
 
 .edit-form-header {
-  font-family: fantasy;
   color: gold;
-  text-shadow: 2px 1px #484646aa;
+  font-family: fantasy;
+  background-color: black;
+  position: sticky;
+  top: -30px;
+  width: 100%;
 }
 
 .quick-actions,
@@ -26,8 +26,9 @@
 .taskText-edit-section,
 .dates {
   background-color: rgb(39, 40, 39);
-  padding: 20px;
-  min-height: 25%;
+  padding: 1.6rem;
+  min-height: 20%;
+  margin-bottom: 15px;
 }
 
 .dates {
@@ -40,27 +41,33 @@
 }
 
 .edit-inputs {
-  padding: 15px;
-  font-size: 1.24rem;
+  padding: 0.8rem;
+  font-size: 0.95rem;
   border-radius: 0.5rem;
   outline: none;
   border: none;
-  width: 60%;
-}
-.edit-headers {
-  color: white;
-  font-family: fantasy;
-  font-weight:100;
+  width: 100%;
+  background-color: transparent;
+  color: beige;
 }
 
-.edit-buttons {
-  width: 20%;
+.edit-headers {
+  color: rgb(221, 200, 43);
+  font-family: fantasy;
+  font-weight: 100;
+  font-size: 1.2rem;
+}
+
+.quick-actions-buttons {
+  width: 30%;
   height: 45px;
   margin-right: 20px;
   font-size: 0.85rem;
   border-radius: 20px;
-  border: none;
+  border-color: black;
   color: gray;
+  padding: 15px;
+  box-shadow: 2px 3px #000000a5;
 }
 
 .dates-inputs {
@@ -81,33 +88,52 @@
   font-family: fantasy;
 }
 
-.buttons {
+.save-cancel-buttons {
   display: flex;
   align-items: center;
   justify-content: center;
-
   height: 100px;
+  padding: 10px;
 }
 
 .cancel-button {
-  background-color: rgba(114, 14, 14, 0.918);
-  color: white;
-  transition: 0.3s;
+  background-color: black;
+  color: gold;
+}
+.cancel-button::after {
+  font-size: 1.1rem;
+  content: "Cancel";
 }
 .cancel-button:hover {
   width: 20%;
   height: 50%;
-}
-.save-button {
-  background-color: rgba(38, 114, 38, 0.918);
+  background-color: rgb(128, 0, 0);
   color: white;
-  transition: 0.3s;
+}
+
+.cancel-button:hover::after {
+  content: "X";
+}
+
+.save-button {
+  background-color: black;
+  color: gold;
+}
+.save-button::after {
+  font-size: 1.2rem;
+  content: "Save";
 }
 .save-button:hover {
   width: 20%;
   height: 50%;
+  background-color: rgba(38, 114, 38, 0.918);
+  color: white;
+}
+
+.save-button:hover::after {
+  content: "✓";
 }
 
 ::placeholder {
-  color: rgb(189, 187, 187);
+  color: rgba(160, 160, 160, 0.807);
 }

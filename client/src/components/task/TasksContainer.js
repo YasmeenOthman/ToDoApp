@@ -55,13 +55,13 @@ const TasksContainer = () => {
                   className="btn-delete"
                   onClick={() => handleDelete(task._id)}
                 >
-                  delete
+                  Delete
                 </button>
                 <button
                   className="btn-edit"
                   onClick={() => handleEdit(task._id)}
                 >
-                  edit
+                  Edit
                 </button>
               </div>
             </div>

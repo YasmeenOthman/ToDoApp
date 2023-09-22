@@ -29,7 +29,6 @@
   transition: 0.4s;
 }
 .taskInput:focus {
-  /* width: 50%; */
   font-size: 1.4em;
 }
 .addTodoBtn {

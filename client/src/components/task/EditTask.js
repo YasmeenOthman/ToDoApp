@@ -3,6 +3,8 @@ import axios from "axios";
 import "./EditTask.css";
 import { useDispatch } from "react-redux";
 import { updateTask } from "../../slices/tasksSlice";
+import Attachments from "./Attachments";
+import CheckList from "./CheckList";
 
 const EditTask = ({ taskId, closeEditOverlay }) => {
   const dispatch = useDispatch();
@@ -55,6 +57,7 @@ const EditTask = ({ taskId, closeEditOverlay }) => {
       <div className="taskText-edit-section">
         <h2 className="edit-headers">Task</h2>
         <input
+          autoFocus
           className="task-text edit-inputs"
           type="text"
           value={editedTask}
@@ -64,8 +67,8 @@ const EditTask = ({ taskId, closeEditOverlay }) => {
 
       <div className="quick-actions">
         <h2 className="edit-headers">Quick Actions</h2>
-        <button className="edit-buttons"> Add CheckList</button>
-        <button className="edit-buttons"> Add Attachment</button>
+        <button className="quick-actions-buttons"> Add CheckList</button>
+        <button className="quick-actions-buttons"> Add Attachment</button>
       </div>
 
       <div className="task-description">
@@ -87,14 +90,15 @@ const EditTask = ({ taskId, closeEditOverlay }) => {
           <input className=" dates-inputs" type="date" placeholder="Due Date" />
         </div>
       </div>
-
-      <div className="buttons">
-        <button onClick={handleSave} className="save-button ">
-          Save
-        </button>
-        <button onClick={handleCancel} className="cancel-button ">
-          cancel
-        </button>
+      {/* <div>
+        <Attachments />
+      </div>
+      <div>
+        <CheckList />
+      </div> */}
+      <div className="save-cancel-buttons">
+        <button onClick={handleSave} className="save-button "></button>
+        <button onClick={handleCancel} className="cancel-button "></button>
       </div>
     </div>
   );
