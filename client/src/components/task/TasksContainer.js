@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteTask } from "../../slices/tasksSlice";
 import axios from "axios";
 import EditTask from "./EditTask";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Icon from "@mui/material/Icon";
+import { yellow } from "@mui/material/colors";
 
 const TasksContainer = () => {
   // tasks state  from redux store
@@ -55,13 +58,13 @@ const TasksContainer = () => {
                   className="btn-delete"
                   onClick={() => handleDelete(task._id)}
                 >
-                  Delete
+                  <DeleteIcon sx={{ color: yellow[100], fontSize: 30 }} />
                 </button>
                 <button
                   className="btn-edit"
                   onClick={() => handleEdit(task._id)}
                 >
-                  Edit
+                  <Icon sx={{ color: yellow[100], fontSize: 30 }}>edit</Icon>
                 </button>
               </div>
             </div>

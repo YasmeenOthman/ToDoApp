@@ -3,12 +3,13 @@ import axios from "axios";
 import "./EditTask.css";
 import { useDispatch } from "react-redux";
 import { updateTask } from "../../slices/tasksSlice";
-import Attachments from "./Attachments";
+import AttachmentsList from "./Attachments";
 import CheckList from "./CheckList";
 
 const EditTask = ({ taskId, closeEditOverlay }) => {
   const dispatch = useDispatch();
   const [editedTask, setEditedTask] = useState("");
+  const [isAttachment, setIsAttachment] = useState(false);
 
   useEffect(() => {
     // Fetch the task data that needs to be updated  based on taskId
@@ -50,55 +51,82 @@ const EditTask = ({ taskId, closeEditOverlay }) => {
     closeEditOverlay();
   }
 
+  function addAttachment() {
+    setIsAttachment(true);
+  }
+
+  function addSubTask() {
+    alert("add a subtask");
+  }
+
   return (
-    <div className="edit-task-form">
-      <h1 className="edit-form-header">Edit Form</h1>
+    <div className="edit-container">
+      <div className="edit-task-form">
+        <h1 className="edit-form-header">Edit Form</h1>
 
-      <div className="taskText-edit-section">
-        <h2 className="edit-headers">Task</h2>
-        <input
-          autoFocus
-          className="task-text edit-inputs"
-          type="text"
-          value={editedTask}
-          onChange={(e) => setEditedTask(e.target.value)}
-        />
-      </div>
-
-      <div className="quick-actions">
-        <h2 className="edit-headers">Quick Actions</h2>
-        <button className="quick-actions-buttons"> Add CheckList</button>
-        <button className="quick-actions-buttons"> Add Attachment</button>
-      </div>
-
-      <div className="task-description">
-        <h2 className="edit-headers">Task Description</h2>
-        <textarea
-          input="text"
-          placeholder="Add task description ..."
-          className="edit-inputs"
-        />
-      </div>
-
-      <div className="dates">
-        <div className="dates-col1">
-          <h2 className="edit-headers">Start date</h2>
-          <input className=" dates-inputs" type="date" placeholder="Due Date" />
+        <div className="taskText-edit-section">
+          <h2 className="edit-headers">Task</h2>
+          <input
+            autoFocus
+            className="task-text edit-inputs"
+            type="text"
+            value={editedTask}
+            onChange={(e) => setEditedTask(e.target.value)}
+          />
         </div>
-        <div className="dates-col2">
-          <h2 className="edit-headers">Due Date</h2>
-          <input className=" dates-inputs" type="date" placeholder="Due Date" />
+
+        <div className="quick-actions">
+          <h2 className="edit-headers">Quick Actions</h2>
+          <button onClick={addSubTask} className="quick-actions-buttons">
+            {" "}
+            Add CheckList
+          </button>
+          <button onClick={addAttachment} className="quick-actions-buttons">
+            {" "}
+            Add Attachment
+          </button>
         </div>
-      </div>
-      {/* <div>
-        <Attachments />
-      </div>
-      <div>
+
+        <div className="task-description">
+          <h2 className="edit-headers">Task Description</h2>
+          <textarea
+            input="text"
+            placeholder="Add task description ..."
+            className="edit-inputs"
+          />
+        </div>
+
+        <div className="dates">
+          <div className="dates-col1">
+            <h2 className="edit-headers">Start date</h2>
+            <input
+              className=" dates-inputs"
+              type="date"
+              placeholder="Due Date"
+            />
+          </div>
+          <div className="dates-col2">
+            <h2 className="edit-headers">Due Date</h2>
+            <input
+              className=" dates-inputs"
+              type="date"
+              placeholder="Due Date"
+            />
+          </div>
+        </div>
+        {isAttachment && (
+          <div>
+            <AttachmentsList />
+          </div>
+        )}
+
+        {/*<div>
         <CheckList />
       </div> */}
-      <div className="save-cancel-buttons">
-        <button onClick={handleSave} className="save-button "></button>
-        <button onClick={handleCancel} className="cancel-button "></button>
+        <div className="save-cancel-buttons">
+          <button onClick={handleSave} className="save-button"></button>
+          <button onClick={handleCancel} className="cancel-button"></button>
+        </div>
       </div>
     </div>
   );

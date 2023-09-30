@@ -1,5 +1,8 @@
 import { updateNewTaskText, addTask, setTasks } from "../../slices/tasksSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Icon from "@mui/material/Icon";
+import { green } from "@mui/material/colors";
+
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
@@ -53,7 +56,7 @@ const AddTask = () => {
           onChange={handleChange}
         />
         <button className="addTodoBtn" type="submit">
-          +
+          <Icon sx={{ color: green[500], fontSize: 45 }}>add_circle</Icon>
         </button>
       </form>
     </>
