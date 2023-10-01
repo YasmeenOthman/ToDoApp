@@ -77,20 +77,17 @@ input[type="checkbox"] {
   appearance: none;
   background-color: #fff;
   margin: 0;
-  width: 1.5em;
-  height: 1.3em;
+  width: 1.8em;
+  height: 1.6em;
   border: none;
   border-radius: 0.15em;
   display: grid;
   place-content: center;
 }
 input[type="checkbox"]::before {
-  content: "";
-  width: 0.65em;
-  height: 0.65em;
+  content: "✓";
   transform: scale(0);
-  transition: 120ms transform ease-in-out;
-  background-color: rgb(3, 81, 33);
+  font-size: 1.7em;
 }
 input[type="checkbox"]:checked::before {
   transform: scale(1);
@@ -99,7 +96,7 @@ input[type="checkbox"]:checked::before {
   width: 100%;
   margin-left: 10px;
   word-wrap: break-word;
-  font-size: 1.4em;
+  font-size: 1.6em;
   font-weight: 100;
   font-family: "Courier New", Courier, monospace;
   color: gold;
