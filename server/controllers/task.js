@@ -35,18 +35,22 @@ const getUserTasks = async (req, res) => {
 
 // update a specific task with a specific id
 const updateTask = async (req, res) => {
-  const updatedTaskText = req.body;
   const id = req.params.taskId;
+  const updatedTask = req.body;
+  console.log(updatedTask);
   try {
     const task = await Task.findById(id);
     if (!task) {
       return res.status(404).send("Task not found");
     }
-    const newValue = await Task.findByIdAndUpdate(id, updatedTaskText);
+    const newValue = await Task.findByIdAndUpdate(id, updatedTask, {
+      new: true,
+    });
+    console.log(newValue);
 
     res.json({ msg: "updated successfully...", newValue });
   } catch (error) {
-    res.status(400).send("Can not update");
+    res.status(400).send({ msg: "Can not update", error });
   }
 };
 
@@ -67,21 +71,26 @@ const deleteTask = async (req, res) => {
 };
 
 // get one specific tasks
-const getTask = async (req, res) => {
-  try {
-    let id = req.params.taskId;
+// const getTask = async (req, res) => {
+//   try {
+//     let id = req.params.taskId;
 
-    let task = await Task.findById(id);
+//     let task = await Task.findById(id);
 
-    if (!task) {
-      return res.status(404).json({ message: "Task not found" });
-    }
+//     if (!task) {
+//       return res.status(404).json({ message: "Task not found" });
+//     }
 
-    res.status(200).json(task);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Internal server error" });
-  }
+//     res.status(200).json(task);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Internal server error" });
+//   }
+// };
+
+module.exports = {
+  createTask,
+  getUserTasks,
+  deleteTask,
+  updateTask,
 };
-
-module.exports = { createTask, getUserTasks, deleteTask, updateTask, getTask };

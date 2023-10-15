@@ -11,9 +11,12 @@ export const tasksSlice = createSlice({
       state.newTaskText = action.payload;
     },
     updateTask: (state, action) => {
-      const { taskId, editedTask } = action.payload;
+      const { taskId, newValue } = action.payload;
+
       const updatedTasks = state.tasks.map((task) =>
-        task._id === taskId ? { ...task, text: editedTask } : task
+        task._id === taskId
+          ? { ...task, text: newValue.text, status: newValue.status }
+          : task
       );
 
       state.tasks = updatedTasks;

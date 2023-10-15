@@ -4,9 +4,9 @@ import "./EditTask.css";
 import { useDispatch } from "react-redux";
 import { updateTask } from "../../slices/tasksSlice";
 import AttachmentsList from "./Attachments";
-import CheckList from "./CheckList";
+// import CheckList from "./CheckList";
 
-const EditTask = ({ taskId, closeEditOverlay }) => {
+const EditTask = ({ taskId, closeEditOverlay, tasks }) => {
   const dispatch = useDispatch();
   const [editedTask, setEditedTask] = useState("");
   const [isAttachment, setIsAttachment] = useState(false);
@@ -28,6 +28,7 @@ const EditTask = ({ taskId, closeEditOverlay }) => {
   }, [taskId]);
 
   async function handleSave() {
+    let newValue;
     // Trim the editedTask to remove leading and trailing whitespace
     const trimmedTask = editedTask.trim();
 
@@ -35,11 +36,18 @@ const EditTask = ({ taskId, closeEditOverlay }) => {
       // If the trimmed task is empty, display an error message and do not proceed with the update
       alert("Task text cannot be empty.");
     } else {
+      tasks.map((task) => {
+        if (task._id === taskId) {
+          newValue = { ...task, text: editedTask };
+        }
+      });
       try {
-        await axios.put(`http://localhost:8000/task/update/${taskId}`, {
-          text: editedTask,
-        });
-        dispatch(updateTask({ taskId, editedTask }));
+        await axios.put(
+          `http://localhost:8000/task/update/${taskId}`,
+          newValue
+        );
+
+        dispatch(updateTask({ taskId, newValue }));
         closeEditOverlay();
       } catch (error) {
         alert("Failed to update the task. Please try again.");

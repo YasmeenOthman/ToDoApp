@@ -73,25 +73,7 @@
   align-items: center;
   justify-content: center;
 }
-input[type="checkbox"] {
-  appearance: none;
-  background-color: #fff;
-  margin: 0;
-  width: 1.8em;
-  height: 1.6em;
-  border: none;
-  border-radius: 0.15em;
-  display: grid;
-  place-content: center;
-}
-input[type="checkbox"]::before {
-  content: "✓";
-  transform: scale(0);
-  font-size: 1.7em;
-}
-input[type="checkbox"]:checked::before {
-  transform: scale(1);
-}
+
 .pending__items p {
   width: 100%;
   margin-left: 10px;
@@ -115,4 +97,37 @@ input[type="checkbox"]:checked::before {
   padding: 6px;
   border: none;
   background-color: transparent;
+}
+
+/* Add a style for the checked checkbox */
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  width: 1.8em;
+  height: 1.6em;
+  border: none;
+  border-radius: 0.15em;
+  display: grid;
+  place-content: center;
+}
+input[type="checkbox"]::before {
+  content: "✓";
+  transform: scale(0);
+  font-size: 1.7em;
+}
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+/* Add a style for the completed task text */
+.completed-text {
+  text-decoration: line-through;
+
+}
+
+/* Style for completed task container */
+.completed {
+  background-color: #3f3f3f;
+  opacity: 0.85;
 }

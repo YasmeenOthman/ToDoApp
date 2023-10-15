@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import "./task.css";
 import { useDispatch, useSelector } from "react-redux";
+import { updateTask } from "../../slices/tasksSlice";
 import { deleteTask } from "../../slices/tasksSlice";
 import axios from "axios";
 import EditTask from "./EditTask";
@@ -13,6 +15,7 @@ const TasksContainer = () => {
   const dispatch = useDispatch();
   const [editingTaskId, setEditingTaskId] = useState(null);
   const [showEditOverlay, setShowEditOverlay] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleEdit = (taskId) => {
     setEditingTaskId(taskId);
@@ -40,6 +43,30 @@ const TasksContainer = () => {
     }
   }
 
+  const handleCheckboxChange = async (taskId) => {
+    try {
+      let newValue;
+      tasks.map((task) => {
+        if (task._id === taskId) {
+          newValue = {
+            ...task,
+            status: task.status === "pending" ? "completed" : "pending",
+          };
+          setIsChecked(!isChecked);
+        }
+      });
+      let res = await axios.put(
+        `http://localhost:8000/task/update/${taskId}`,
+        newValue
+      );
+
+      // console.log(res.data);
+      dispatch(updateTask({ taskId, newValue }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="container">
       {tasks && tasks.length === 0 ? (
@@ -47,10 +74,26 @@ const TasksContainer = () => {
       ) : (
         tasks.map((task) => {
           return (
-            <div key={task._id} className="pending__items">
+            <div
+              key={task._id}
+              className={`pending__items ${
+                task.status === "completed" ? "completed" : ""
+              }`}
+            >
               <div className="first-section">
-                <input type="checkbox" />
-                <p>{task.text}</p>
+                <input
+                  type="checkbox"
+                  checked={task.status === "completed"}
+                  className="checkbox"
+                  onChange={() => handleCheckboxChange(task._id)}
+                />
+                <p
+                  className={
+                    task.status === "completed" ? "completed-text" : ""
+                  }
+                >
+                  {task.text}
+                </p>
               </div>
 
               <div className="buttons-section">
@@ -72,7 +115,11 @@ const TasksContainer = () => {
         })
       )}
       {showEditOverlay && (
-        <EditTask taskId={editingTaskId} closeEditOverlay={handleCancelEdit} />
+        <EditTask
+          tasks={tasks}
+          taskId={editingTaskId}
+          closeEditOverlay={handleCancelEdit}
+        />
       )}
     </div>
   );
