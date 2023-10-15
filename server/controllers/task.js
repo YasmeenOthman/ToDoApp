@@ -71,26 +71,27 @@ const deleteTask = async (req, res) => {
 };
 
 // get one specific tasks
-// const getTask = async (req, res) => {
-//   try {
-//     let id = req.params.taskId;
+const getTask = async (req, res) => {
+  try {
+    let id = req.params.taskId;
 
-//     let task = await Task.findById(id);
+    let task = await Task.findById(id);
 
-//     if (!task) {
-//       return res.status(404).json({ message: "Task not found" });
-//     }
+    if (!task) {
+      return res.status(404).json({ message: "Task not found" });
+    }
 
-//     res.status(200).json(task);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: "Internal server error" });
-//   }
-// };
+    res.status(200).json(task);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
 
 module.exports = {
   createTask,
   getUserTasks,
   deleteTask,
   updateTask,
+  getTask,
 };

@@ -15,9 +15,13 @@ const TasksContainer = () => {
   const dispatch = useDispatch();
   const [editingTaskId, setEditingTaskId] = useState(null);
   const [showEditOverlay, setShowEditOverlay] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
 
   const handleEdit = (taskId) => {
+    let task = tasks.find((task) => task._id === taskId);
+    if (task.status === "completed") {
+      alert("Can not edit completed tasks ");
+      return;
+    }
     setEditingTaskId(taskId);
     setShowEditOverlay(true);
   };
@@ -43,6 +47,7 @@ const TasksContainer = () => {
     }
   }
 
+  // mark a task as completed
   const handleCheckboxChange = async (taskId) => {
     try {
       let newValue;
@@ -52,7 +57,6 @@ const TasksContainer = () => {
             ...task,
             status: task.status === "pending" ? "completed" : "pending",
           };
-          setIsChecked(!isChecked);
         }
       });
       let res = await axios.put(
