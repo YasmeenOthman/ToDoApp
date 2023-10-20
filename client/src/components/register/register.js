@@ -5,16 +5,49 @@ import axios from "axios";
 
 const SignUp = () => {
   const [user, setUser] = useState({ username: "", email: "", password: "" });
+  const [errors, setErrors] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    e.preventDefault();
+    const name = e.target.name;
     const value = e.target.value;
-    //👇🏻 update the state with the added values
-    setUser({ ...user, [e.target.name]: value });
+    e.preventDefault();
+
+    // Validation rules
+    let error = "";
+    if (name === "username") {
+      if (value.length < 3) {
+        error = "Username must be at least 3 characters long";
+      }
+    } else if (name === "password") {
+      if (value.length < 8) {
+        error = "Password must be at least 8 characters long";
+      } else if (!/[A-Z]/.test(value)) {
+        error = "Password must contain at least one capital letter";
+      } else if (!/\W/.test(value)) {
+        error = "Password must contain at least one symbol @#!^...";
+      }
+    }
+
+    // Update the user state
+    setUser({ ...user, [name]: value });
+
+    // Update the errors state
+    setErrors({ ...errors, [name]: error });
   };
   function handleSignUp(e) {
     e.preventDefault();
+    // Check for validation errors
+    if (Object.values(errors).some((error) => error !== "")) {
+      alert("Please fix the validation errors before signing up.");
+      return;
+    }
+
     axios
       .post("http://localhost:8000/user/signup", user)
       .then((res) => {
@@ -48,6 +81,9 @@ const SignUp = () => {
             value={user.username}
             onChange={handleChange}
           />
+          {errors.username && (
+            <div className="error-message">{errors.username}</div>
+          )}
           <br />
           <label htmlFor="email">Email</label>
           <input
@@ -59,7 +95,10 @@ const SignUp = () => {
             value={user.email}
             onChange={handleChange}
           />
+          {errors.email && <div className="error-message">{errors.email}</div>}
+
           <br />
+
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -70,6 +109,9 @@ const SignUp = () => {
             required
             onChange={handleChange}
           />
+          {errors.password && (
+            <div className="error-message">{errors.password}</div>
+          )}
           <br />
           <button>Sign-up</button>
         </form>
