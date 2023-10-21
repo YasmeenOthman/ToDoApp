@@ -63,11 +63,11 @@
   font-size: 1.2em;
   color: #3d3c3c;
 }
-.login__form > input {
+.login__form input {
   width: 100%;
   padding: 20px;
-  margin-bottom: 15px;
   border-radius: 15px;
+  outline: none;
   border-color: #eee;
   font-size: 1.2em;
   border-style: ridge;
@@ -91,7 +91,21 @@
   background-color: #f09d4a;
   color: #fff;
 }
-
+.password-container {
+  border: 1px black solid;
+  border-radius: 15px;
+  border-color: #b0b0b0;
+}
+.password-container input {
+  border: none;
+  outline-style: none;
+}
+.visibility-btn {
+  border: none;
+  background-color: transparent;
+  margin-right: 10px;
+  cursor: pointer;
+}
 @media screen and (max-width: 768px) {
   .loginContainer {
     flex-direction: column;

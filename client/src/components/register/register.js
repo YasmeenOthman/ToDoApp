@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link, useNavigate } from "react-router-dom";
 import "./register.css";
 import axios from "axios";
@@ -10,6 +12,7 @@ const SignUp = () => {
     email: "",
     password: "",
   });
+  const [passwordVisible, setPasswordVisible] = useState("");
 
   const navigate = useNavigate();
 
@@ -39,6 +42,10 @@ const SignUp = () => {
 
     // Update the errors state
     setErrors({ ...errors, [name]: error });
+  };
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
   };
   function handleSignUp(e) {
     e.preventDefault();
@@ -100,15 +107,25 @@ const SignUp = () => {
           <br />
 
           <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Your password..."
-            value={user.password}
-            required
-            onChange={handleChange}
-          />
+          <div className="password-container">
+            <input
+              type={passwordVisible ? "text" : "password"}
+              name="password"
+              id="password"
+              placeholder="Your password..."
+              value={user.password}
+              required
+              onChange={handleChange}
+            />
+            <button
+              className="visibility-btn"
+              type="button"
+              onClick={togglePasswordVisibility}
+            >
+              {passwordVisible ? <VisibilityOff /> : <Visibility />}
+            </button>
+          </div>
+
           {errors.password && (
             <div className="error-message">{errors.password}</div>
           )}

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import "./login.css";
 import axios from "axios";
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
+  const [passwordVisible, setPasswordVisible] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -30,6 +32,9 @@ const Login = () => {
         );
       });
   }
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
   return (
     <div className="loginContainer">
       <div className="formSection">
@@ -54,15 +59,24 @@ const Login = () => {
           />
           <br />
           <label htmlFor="password">Password</label>
-          <input
-            placeholder="Password..."
-            type="password"
-            name="password"
-            id="password"
-            value={user.password}
-            onChange={handleChange}
-            required
-          />
+          <div className="password-container">
+            <input
+              placeholder="Password..."
+              type={passwordVisible ? "text" : "password"}
+              name="password"
+              id="password"
+              value={user.password}
+              onChange={handleChange}
+              required
+            />
+            <button
+              className="visibility-btn"
+              type="button"
+              onClick={togglePasswordVisibility}
+            >
+              {passwordVisible ? <VisibilityOff /> : <Visibility />}
+            </button>
+          </div>
           <button type="submit">Login</button>
         </form>
       </div>

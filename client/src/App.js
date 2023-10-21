@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import Comments from "./components/comments";
 import Task from "./components/task/Task";
 import Login from "./components/login/login.js";
 import SignUp from "./components/register/register.js";

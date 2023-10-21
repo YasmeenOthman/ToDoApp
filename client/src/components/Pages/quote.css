@@ -14,7 +14,7 @@
 .quoteBody {
   padding-top: 50px;
   font-family: var(--font-family);
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   text-align: center;
   min-height: 150px;
   animation: pageNameAnimation 5s forwards;
@@ -43,6 +43,12 @@
 
 @media screen and (max-width: 768px) {
   .quoteContainer {
-    width: 80%;
+    width: 90%;
+  }
+  .quoteBody {
+    font-size: 0.9rem;
+  }
+  .quoteAuthor {
+    font-size: 0.8rem;
   }
 }

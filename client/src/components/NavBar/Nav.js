@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,6 +10,11 @@ const Nav = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const navigate = useNavigate("");
   const token = localStorage.getItem("token");
+  let username = "";
+  if (token) {
+    let decoded = jwt_decode(token);
+    username = decoded.username;
+  }
 
   function handleLogOut() {
     if (token) {
@@ -38,7 +44,7 @@ const Nav = () => {
       <div className={isNavExpanded ? "menu-expanded" : "menu-items"}>
         {token ? (
           <div>
-            <Link to="/Task">
+            <Link to="/task">
               <button
                 className="btn"
                 onClick={() => {
@@ -48,11 +54,14 @@ const Nav = () => {
                 Your Tasks
               </button>
             </Link>
+
             <Link to="/">
               <button onClick={handleLogOut} className="btn">
                 LogOut
               </button>
             </Link>
+
+            <button className="btn-username">{username}</button>
           </div>
         ) : (
           <div>
