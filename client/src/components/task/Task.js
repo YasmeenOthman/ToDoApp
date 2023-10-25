@@ -6,8 +6,7 @@ import TasksContainer from "./TasksContainer";
 import AddTask from "./AddTask";
 
 import "./task.css";
-import EditTask from "./EditTask";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setTasks } from "../../slices/tasksSlice";
 
 const Task = () => {

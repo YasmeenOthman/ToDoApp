@@ -49,7 +49,7 @@ const loginUser = async (req, res) => {
     if (userFound && (await bcrypt.compare(password, userFound.password))) {
       // Create token
       const token = jwt.sign(
-        { userId: userFound._id, email },
+        { userId: userFound._id, username: userFound.username },
         process.env.TOKEN_KEY,
         { expiresIn: "2h" }
       );
