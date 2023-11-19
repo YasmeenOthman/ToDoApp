@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import toastOptions from "../../Toastify";
 import "./register.css";
 import axios from "axios";
 
@@ -47,7 +50,7 @@ const SignUp = () => {
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
-  function handleSignUp(e) {
+  async function handleSignUp(e) {
     e.preventDefault();
     // Check for validation errors
     if (Object.values(errors).some((error) => error !== "")) {
@@ -58,12 +61,16 @@ const SignUp = () => {
     axios
       .post("http://localhost:8000/user/signup", user)
       .then((res) => {
-        alert("SignUp successfully");
-        //👇🏻 redirects to the login page.
-        navigate("/login");
+        toast.success("SignUp successfully", {
+          toastOptions,
+          onClose: () => {
+            //👇🏻 redirects to the login page.
+            navigate("/login");
+          },
+        });
       })
       .catch((err) => {
-        alert("Could not register");
+        toast.error(err.response.data.msg, toastOptions);
       });
   }
 
@@ -134,6 +141,7 @@ const SignUp = () => {
         </form>
       </div>
       <div className="signupImageSection"></div>
+      <ToastContainer />
     </div>
   );
 };

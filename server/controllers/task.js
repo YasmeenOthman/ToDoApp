@@ -37,7 +37,7 @@ const getUserTasks = async (req, res) => {
 const updateTask = async (req, res) => {
   const id = req.params.taskId;
   const updatedTask = req.body;
-  console.log(updatedTask);
+
   try {
     const task = await Task.findById(id);
     if (!task) {
@@ -49,7 +49,7 @@ const updateTask = async (req, res) => {
     console.log(newValue);
 
     res.json({ msg: "updated successfully...", newValue });
-  } catch (error) {
+  } catch (error) {``
     res.status(400).send({ msg: "Can not update", error });
   }
 };

@@ -3,14 +3,10 @@ import axios from "axios";
 import "./EditTask.css";
 import { useDispatch } from "react-redux";
 import { updateTask } from "../../slices/tasksSlice";
-import AttachmentsList from "./Attachments";
-// import CheckList from "./CheckList";
 
 const EditTask = ({ taskId, closeEditOverlay, tasks }) => {
   const dispatch = useDispatch();
   const [editedTask, setEditedTask] = useState("");
-  const [isAttachment, setIsAttachment] = useState(false);
-  const [taskDescription, setTaskDescription] = useState("");
 
   useEffect(() => {
     // Fetch the task data that needs to be updated  based on taskId
@@ -64,7 +60,6 @@ const EditTask = ({ taskId, closeEditOverlay, tasks }) => {
     <div className="edit-container">
       <div className="edit-task-form">
         <h1 className="edit-form-header">Edit Form</h1>
-
         <div className="taskText-edit-section">
           <h2 className="edit-headers">Task</h2>
           <input
@@ -75,17 +70,6 @@ const EditTask = ({ taskId, closeEditOverlay, tasks }) => {
             onChange={(e) => setEditedTask(e.target.value)}
           />
         </div>
-
-        {/* <div className="task-description">
-          <h2 className="edit-headers">Task Description</h2>
-          <textarea
-            input="text"
-            placeholder="Add a more detailed task description ..."
-            className="edit-inputs"
-            onChange={addTaskDescription}
-          />
-        </div> */}
-
         <div className="save-cancel-buttons">
           <button onClick={handleSave} className="save-button"></button>
           <button onClick={handleCancel} className="cancel-button"></button>

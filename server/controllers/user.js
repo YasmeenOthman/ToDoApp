@@ -9,14 +9,14 @@ const registerUser = async (req, res) => {
     const { username, email, password } = req.body;
     // Validate user input
     if (!(email && password && username)) {
-      res.status(400).send("All input is required");
+      res.status(400).send({ msg: "All input is required" });
     }
 
     // check if user already exist in our database
     const oldUser = await user.findOne({ email });
 
     if (oldUser) {
-      return res.status(409).send("User Already Exist. Please Login");
+      return res.status(409).send({ msg: "User Already Exist. Please Login" });
     }
     //Encrypt user password
     encryptedPassword = await bcrypt.hash(password, 10);
@@ -41,24 +41,31 @@ const loginUser = async (req, res) => {
 
     // Validate user input
     if (!(email && password)) {
-      res.status(400).send("All input is required");
+      res.status(400).send({
+        msg: "Both email and password should exist ",
+      });
     }
     // Validate if user exist in our database
     const userFound = await user.findOne({ email });
 
-    if (userFound && (await bcrypt.compare(password, userFound.password))) {
-      // Create token
-      const token = jwt.sign(
-        { userId: userFound._id, username: userFound.username },
-        process.env.TOKEN_KEY,
-        { expiresIn: "2h" }
-      );
-      // save user token
-      user.token = token;
-      // user
-      res.status(200).json({ msg: "Login successfully", token });
+    if (userFound) {
+      let isValidPassword = await bcrypt.compare(password, userFound.password);
+      if (isValidPassword) {
+        // Create token
+        const token = jwt.sign(
+          { userId: userFound._id, username: userFound.username },
+          process.env.TOKEN_KEY,
+          { expiresIn: "2h" }
+        );
+        // save user token
+        user.token = token;
+        // user
+        res.status(200).json({ msg: "Login successfully", token });
+      } else {
+        res.status(401).json({ msg: "Wrong Password" });
+      }
     } else {
-      res.status(400).send("Invalid Credentials");
+      res.status(400).send({ msg: "User not found,please register first" });
     }
   } catch (err) {
     console.log(err);

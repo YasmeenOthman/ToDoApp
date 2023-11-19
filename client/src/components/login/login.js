@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import toastOptions from "../../Toastify";
 import { Link, useNavigate } from "react-router-dom";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
 import axios from "axios";
 
@@ -21,15 +24,17 @@ const Login = () => {
     axios
       .post("http://localhost:8000/user/login", user)
       .then((res) => {
-        alert("login successfully");
-        //👇🏻 redirects to the Tasks page.
-        localStorage.setItem("token", res.data.token);
-        navigate("/");
+        toast.success("Login successful", {
+          toastOptions,
+          onClose: () => {
+            // Redirect to the home page after the toast is closed
+            localStorage.setItem("token", res.data.token);
+            navigate("/");
+          },
+        });
       })
       .catch((err) => {
-        alert(
-          "Could not login, make sure you have an account or you are using the right credential"
-        );
+        toast.error(err.response.data.msg, toastOptions);
       });
   }
   const togglePasswordVisibility = () => {
@@ -81,6 +86,7 @@ const Login = () => {
         </form>
       </div>
       <div className="imageSection"></div>
+      <ToastContainer />
     </div>
   );
 };

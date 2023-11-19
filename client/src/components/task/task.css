@@ -66,6 +66,7 @@
 
 .pending__items {
   background-color: #000000;
+  /* background-color: #be2f2f; */
 }
 
 .pending__items .first-section {
@@ -123,11 +124,9 @@ input[type="checkbox"]:checked::before {
 /* Add a style for the completed task text */
 .completed-text {
   text-decoration: line-through;
-
 }
 
 /* Style for completed task container */
 .completed {
-  background-color: #3f3f3f;
-  opacity: 0.85;
+  opacity: 0.9;
 }

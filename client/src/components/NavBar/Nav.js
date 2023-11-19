@@ -7,35 +7,43 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import LogoutIcon from "@mui/icons-material/Logout";
 import TaskIcon from "@mui/icons-material/Task";
 import HomeIcon from "@mui/icons-material/Home";
-import { red } from "@mui/material/colors";
+import PersonIcon from "@mui/icons-material/Person";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import Modal from "../Modal/Modal";
 
 import "./Nav.css";
 
 const Nav = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const navigate = useNavigate("");
+
   const token = localStorage.getItem("token");
   let username = "";
+
   if (token) {
     let decoded = jwt_decode(token);
     username = decoded.username;
   }
 
   function handleLogOut() {
-    if (window.confirm("Are you sure you want to logout?")) {
-      if (token) {
-        localStorage.removeItem("token");
-        navigate("/");
-        setIsNavExpanded(!isNavExpanded);
-      } else {
-        return;
-      }
-    }
+    setIsModalOpen(true);
   }
 
+  function onConfirm() {
+    if (token) {
+      localStorage.removeItem("token");
+      navigate("/");
+      setIsNavExpanded(!isNavExpanded);
+    } else {
+      return;
+    }
+    setIsModalOpen(false);
+  }
   return (
     <div className="navbar">
-      <Link to="/">
+      <Link id="mainTitle" to="/">
         <h1>Plan Your Day...</h1>
       </Link>
       {/* Conditionally render the menu icon */}
@@ -52,8 +60,14 @@ const Nav = () => {
         {token ? (
           <div>
             <Link to="/">
-              <button className="btn">
-                <HomeIcon sx={{ fontSize: 35 }} />
+              <button
+                title="Home"
+                className="btn"
+                onClick={() => {
+                  setIsNavExpanded(false);
+                }}
+              >
+                <HomeIcon sx={{ fontSize: 30 }} />
               </button>
             </Link>
 
@@ -62,18 +76,24 @@ const Nav = () => {
                 className="btn"
                 title="add tasks"
                 onClick={() => {
-                  setIsNavExpanded(!isNavExpanded);
+                  setIsNavExpanded(false);
                 }}
               >
-                <TaskIcon sx={{ fontSize: 35 }} />
+                <TaskIcon sx={{ fontSize: 30 }} />
               </button>
             </Link>
-            {/* <button className="btn-username">{username}</button> */}
+
             <Link to="/">
               <button title="logout" onClick={handleLogOut} className="btn">
-                <LogoutIcon sx={{ fontSize: 35 }} />
+                <LogoutIcon sx={{ fontSize: 25 }} />
               </button>
             </Link>
+            {isModalOpen && (
+              <Modal
+                onCancel={() => setIsModalOpen(false)}
+                onConfirm={onConfirm}
+              />
+            )}
           </div>
         ) : (
           <div>
@@ -81,7 +101,7 @@ const Nav = () => {
               <button
                 className="btn"
                 onClick={() => {
-                  setIsNavExpanded(!isNavExpanded);
+                  setIsNavExpanded(false);
                 }}
               >
                 Login
