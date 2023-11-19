@@ -83,7 +83,7 @@ const Nav = () => {
               </button>
             </Link>
 
-            <Link to="/">
+            <Link>
               <button title="logout" onClick={handleLogOut} className="btn">
                 <LogoutIcon sx={{ fontSize: 25 }} />
               </button>
@@ -92,6 +92,7 @@ const Nav = () => {
               <Modal
                 onCancel={() => setIsModalOpen(false)}
                 onConfirm={onConfirm}
+                modalTitle={"Logout"}
               />
             )}
           </div>

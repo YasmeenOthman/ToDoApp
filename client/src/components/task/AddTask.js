@@ -1,4 +1,4 @@
-import { updateNewTaskText, addTask, setTasks } from "../../slices/tasksSlice";
+import { updateNewTaskText, setTasks } from "../../slices/tasksSlice";
 import { useDispatch, useSelector } from "react-redux";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import { green } from "@mui/material/colors";
@@ -9,7 +9,6 @@ import jwt_decode from "jwt-decode";
 const AddTask = () => {
   const dispatch = useDispatch();
   const newTaskText = useSelector((state) => state.tasks.newTaskText);
-
   let token = localStorage.getItem("token");
   let decodedToken = jwt_decode(token);
   let userId = decodedToken.userId;

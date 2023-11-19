@@ -14,7 +14,7 @@
   border: 1px solid gold;
   background-color: rgb(0, 0, 0);
   height: 35vh;
-  width: 40vw;
+  width: 50vw;
   border-radius: 2rem;
 }
 
@@ -58,4 +58,22 @@
 }
 .modal_buttons .cancel_button:hover {
   background-color: rgba(176, 173, 173, 0.747);
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 8px;
+  }
+  .modal_container {
+    width: 60vw;
+  }
+  .modal_buttons {
+    padding: 1.25rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .modal_buttons button {
+    width: 40%;
+  }
 }
