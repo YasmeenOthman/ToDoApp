@@ -46,10 +46,10 @@ const updateTask = async (req, res) => {
     const newValue = await Task.findByIdAndUpdate(id, updatedTask, {
       new: true,
     });
-    console.log(newValue);
 
     res.json({ msg: "updated successfully...", newValue });
-  } catch (error) {``
+  } catch (error) {
+    ``;
     res.status(400).send({ msg: "Can not update", error });
   }
 };

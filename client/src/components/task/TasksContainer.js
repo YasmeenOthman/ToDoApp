@@ -1,21 +1,32 @@
 import React, { useState } from "react";
-import "./task.css";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { yellow, red } from "@mui/material/colors";
+import Icon from "@mui/material/Icon";
 import { useDispatch, useSelector } from "react-redux";
 import { updateTask } from "../../slices/tasksSlice";
 import { deleteTask } from "../../slices/tasksSlice";
-import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import toastOptions from "../../Toastify";
+import "react-toastify/dist/ReactToastify.css";
 import EditTask from "./EditTask";
-import DeleteIcon from "@mui/icons-material/Delete";
-import Icon from "@mui/material/Icon";
-import { yellow, red } from "@mui/material/colors";
+import Modal from "../Modal/Modal";
+import axios from "axios";
+import "./task.css";
 
 const TasksContainer = () => {
   // tasks state  from redux store
   let tasks = useSelector((state) => state.tasks.tasks);
   const dispatch = useDispatch();
-  const [editingTaskId, setEditingTaskId] = useState(null);
-  const [showEditOverlay, setShowEditOverlay] = useState(false);
 
+  // edit states
+  const [showEditOverlay, setShowEditOverlay] = useState(false);
+  const [editingTaskId, setEditingTaskId] = useState(null);
+
+  // delete states
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [deleteTaskId, setDeleteTaskId] = useState(null);
+
+  // -------- Edit a specific  task ------------
   const handleEdit = (taskId) => {
     let task = tasks.find((task) => task._id === taskId);
     if (task.status === "completed") {
@@ -25,7 +36,7 @@ const TasksContainer = () => {
     setEditingTaskId(taskId);
     setShowEditOverlay(true);
   };
-
+  // --------Cancel the edit -----------------
   const handleCancelEdit = () => {
     setEditingTaskId(null);
     setShowEditOverlay(false);
@@ -33,21 +44,24 @@ const TasksContainer = () => {
 
   // -----Delete a specific task---------------
   async function handleDelete(taskId) {
-    try {
-      if (window.confirm("You are going to delete the tasks, are you sure?")) {
-        let res = await axios.delete(
-          `http://localhost:8000/task/delete/${taskId}`
-        );
-        alert(res.data.msg);
-        // Update tasks state locally by filtering out the deleted task
-        dispatch(deleteTask(taskId));
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    setDeleteTaskId(taskId);
+    setIsModalOpen(true);
   }
 
-  // mark a task as completed
+  async function handleDeleteConfirm() {
+    try {
+      let res = await axios.delete(
+        `http://localhost:8000/task/delete/${deleteTaskId}`
+      );
+      toast.success(res.data.msg, toastOptions);
+      // Update tasks state locally by filtering out the deleted task
+      dispatch(deleteTask(deleteTaskId));
+      setIsModalOpen(false);
+    } catch (error) {
+      toast.error(error, toastOptions);
+    }
+  }
+  // --------- mark a task as completed---------
   const handleCheckboxChange = async (taskId) => {
     try {
       let newValue;
@@ -107,6 +121,13 @@ const TasksContainer = () => {
                 >
                   <DeleteIcon sx={{ color: yellow[100], fontSize: 30 }} />
                 </button>
+                {isModalOpen && (
+                  <Modal
+                    modalTitle="Delete Task"
+                    onCancel={() => setIsModalOpen(false)}
+                    onConfirm={handleDeleteConfirm}
+                  />
+                )}
                 <button
                   className="btn-edit"
                   onClick={() => handleEdit(task._id)}
@@ -135,6 +156,7 @@ const TasksContainer = () => {
           closeEditOverlay={handleCancelEdit}
         />
       )}
+      <ToastContainer />
     </div>
   );
 };

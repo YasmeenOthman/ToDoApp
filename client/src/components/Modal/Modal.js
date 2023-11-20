@@ -14,7 +14,7 @@ function Modal({ onCancel, onConfirm, modalTitle }) {
             cancel
           </button>
           <button onClick={onConfirm} className="logout_button">
-            LogOut
+            Confirm
           </button>
         </div>
       </div>
