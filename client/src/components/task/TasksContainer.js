@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { yellow, red } from "@mui/material/colors";
+import { yellow, red, green, grey } from "@mui/material/colors";
 import Icon from "@mui/material/Icon";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useDispatch, useSelector } from "react-redux";
 import { updateTask } from "../../slices/tasksSlice";
 import { deleteTask } from "../../slices/tasksSlice";
@@ -19,6 +20,7 @@ const TasksContainer = () => {
   const dispatch = useDispatch();
 
   // edit states
+  const [showMore, setShowMore] = useState(false);
   const [showEditOverlay, setShowEditOverlay] = useState(false);
   const [editingTaskId, setEditingTaskId] = useState(null);
 
@@ -85,6 +87,10 @@ const TasksContainer = () => {
     }
   };
 
+  // render the edit and delete button
+  function renderMore() {
+    setShowMore(!showMore);
+  }
   return (
     <div className="container">
       {tasks && tasks.length === 0 ? (
@@ -135,7 +141,7 @@ const TasksContainer = () => {
                   <Icon
                     sx={{
                       color:
-                        task.status === "completed" ? red[500] : yellow[100],
+                        task.status === "completed" ? grey[500] : yellow[100],
                       fontSize: 30,
                       textDecoration:
                         task.status === "completed" ? "line-through" : "none",

@@ -7,6 +7,8 @@ import HomePage from "./components/Pages/Home.js";
 import EditTask from "./components/task/EditTask";
 import NotFoundPage from "./components/Pages/NotFoundPage";
 import Footer from "./components/footer/footer";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   return (

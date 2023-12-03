@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import Quote from "./Quote";
+import { useEffect } from "react";
 
 import "./Home.css";
 
 const HomePage = () => {
   const token = localStorage.getItem("token");
+
   return (
     <>
       <div className="homePage-container">

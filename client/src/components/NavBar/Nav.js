@@ -7,10 +7,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import LogoutIcon from "@mui/icons-material/Logout";
 import TaskIcon from "@mui/icons-material/Task";
 import HomeIcon from "@mui/icons-material/Home";
-import PersonIcon from "@mui/icons-material/Person";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Modal from "../Modal/Modal";
-
 import "./Nav.css";
 
 const Nav = () => {
