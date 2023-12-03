@@ -1,4 +1,4 @@
-# ToDoApp# Todo List App
+# Todo List App
 ## Project Description
 A simple Todo app that allows users to create, edit, and delete tasks with authentication. The main goal is to implement basic CRUD operations with authentication features.
 
