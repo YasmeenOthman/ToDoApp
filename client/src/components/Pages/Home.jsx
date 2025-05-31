@@ -40,15 +40,9 @@ const HomePage = () => {
                 it a try!
               </p>
               <div className="homePageRegisterButton">
-                {!token ? (
-                  <button>
-                    <Link to="/signup">Sign Up</Link>
-                  </button>
-                ) : (
-                  <button>
-                    <Link to="/Task">Start...</Link>
-                  </button>
-                )}
+                <Link to={!token ? "/signup" : "/Task"} className="cta-button">
+                  {!token ? "Sign Up" : "Start..."}
+                </Link>
               </div>
             </div>
           </div>

@@ -15,9 +15,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 .taskInput {
-  width: 40%;
+  width: 50%;
   padding: 20px;
   border-radius: 20px;
   margin: 15px;
@@ -129,4 +130,13 @@ input[type="checkbox"]:checked::before {
 /* Style for completed task container */
 .completed {
   opacity: 0.9;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+  .taskInput {
+    width: 70%;
+  }
 }
