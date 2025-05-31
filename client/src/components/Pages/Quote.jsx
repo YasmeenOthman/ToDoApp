@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./quote.css";
-const quotes = require("../../quotes.json");
+import quotes from "../../quotes.json";
 
 const Quote = () => {
   const [quote, setQuote] = useState({

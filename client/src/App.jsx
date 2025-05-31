@@ -1,14 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Task from "./components/task/Task";
-import Login from "./components/login/login.js";
-import SignUp from "./components/register/register.js";
-import Nav from "./components/NavBar/Nav.js";
-import HomePage from "./components/Pages/Home.js";
-import EditTask from "./components/task/EditTask";
-import NotFoundPage from "./components/Pages/NotFoundPage";
-import Footer from "./components/footer/footer";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import Task from "./components/task/Task.jsx";
+import Login from "./components/login/login.jsx";
+import SignUp from "./components/register/register.jsx";
+import Nav from "./components/NavBar/Nav.jsx";
+import HomePage from "./components/Pages/Home.jsx";
+import EditTask from "./components/task/EditTask.jsx";
+import NotFoundPage from "./components/Pages/NotFoundPage.jsx";
+import Footer from "./components/footer/footer.jsx";
 
 function App() {
   return (
