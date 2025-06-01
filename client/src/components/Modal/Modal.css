@@ -65,10 +65,16 @@
     font-size: 12px;
   }
   .modal_container {
-    width: 60vw;
+    width: 90%;
+  }
+  .modal_header {
+    font-size: 1.2rem;
+  }
+  .modal_message p {
+    font-size: 1.2rem;
   }
   .modal_buttons {
-    padding: 1.25rem;
+    padding: 1rem;
     display: flex;
     justify-content: center;
     gap: 1rem;

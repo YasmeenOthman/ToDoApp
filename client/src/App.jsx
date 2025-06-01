@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Task from "./components/task/Task.jsx";
-import Login from "./components/login/login.jsx";
-import SignUp from "./components/register/register.jsx";
+import Login from "./components/login-register/login.jsx";
+import SignUp from "./components/login-register/register.jsx";
 import Nav from "./components/NavBar/Nav.jsx";
 import HomePage from "./components/Pages/Home.jsx";
 import EditTask from "./components/task/EditTask.jsx";

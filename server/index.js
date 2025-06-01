@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const socketio = require("./socketio");
+// const socketio = require("./socketio");
 const connection = require("./database/connection");
 
 const app = express();
