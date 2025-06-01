@@ -51,8 +51,8 @@ A simple Todo app that allows users to create, edit, and delete tasks with authe
    
 5. Run the Application:
    
-   ```npm start```
+   ```npm run dev```
 
 6. Access the App:
-Open your web browser and navigate to http://localhost:3000 
+Open your web browser and navigate to http://localhost:5173
    
